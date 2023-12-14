@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Agenda</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #4285f4;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .event-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .event-card h2 {
+            background-color: #f4a142;
+            color: #fff;
+            margin: 0;
+            padding: 15px;
+            font-size: 1.2em;
+        }
+
+        .event-details {
+            padding: 15px;
+        }
+
+        .event-time {
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        .event-description {
+            margin-top: 15px;
+        }
+
+        footer {
+            background-color: #f4a142;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Event Agenda</h1>
+    </header>
+
+    <main id="event-container">
+        <!-- Existing event cards go here -->
+    </main>
+
+    <button onclick="openForm()">Add Session</button>
+
+    <!-- Form for adding new sessions -->
+    <div id="add-session-form" style="display: none;">
+        <form onsubmit="addSession(event)">
+            <label for="session-name">Session Name:</label>
+            <input type="text" id="session-name" required>
+
+            <label for="session-time">Session Time:</label>
+            <input type="text" id="session-time" required>
+
+            <label for="session-description">Session Description:</label>
+            <textarea id="session-description" required></textarea>
+
+            <button type="submit">Add Session</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Event Organizer</p>
+    </footer>
+
+    <script>
+        function openForm() {
+            document.getElementById('add-session-form').style.display = 'block';
+        }
+
+        function addSession(event) {
+            event.preventDefault();
+
+            // Read session details from the form
+            const sessionDetails = {
+                title: document.getElementById('session-name').value,
+                time: document.getElementById('session-time').value,
+                description: document.getElementById('session-description').value,
+            };
+
+            // Create a new event card
+            const newSession = document.createElement('div');
+            newSession.className = 'event-card';
+
+            // Populate the new event card
+            newSession.innerHTML = `
+                <h2>${sessionDetails.title}</h2>
+                <div class="event-details">
+                    <div class="event-time">${sessionDetails.time}</div>
+                    <div class="event-description">${sessionDetails.description}</div>
+                </div>
+            `;
+
+            // Append the new event card to the event container
+            document.getElementById('event-container').appendChild(newSession);
+
+            // Clear the form fields
+            document.getElementById('session-name').value = '';
+            document.getElementById('session-time').value = '';
+            document.getElementById('session-description').value = '';
+
+            // Hide the form
+            document.getElementById('add-session-form').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

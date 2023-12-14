@@ -2,13 +2,17 @@ import React from 'react';
 import './Eventcard.css';
 import Agenda from './Agenda';
 
-
+import { useNavigate  } from 'react-router-dom';
 
 
 const EventCard = ({ event }) => {
-  const handleClick = () => {
+    const navigate = useNavigate ();
+
+    const handleClick = () => {
     const x = event.id; 
     console.log({x});
+    navigate(`/Agenda/${x}`);
+
     
   };
   return (
