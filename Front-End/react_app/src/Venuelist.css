@@ -1,0 +1,9 @@
+.venue-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start; /* Align items to the start of the flex container */
+    gap : 10px;
+    background-color:blanchedalmond
+  }
+
