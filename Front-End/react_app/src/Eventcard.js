@@ -5,16 +5,18 @@ import Agenda from './Agenda';
 import { useNavigate  } from 'react-router-dom';
 
 
-const EventCard = ({ event }) => {
+const EventCard = ({event, handleCallback}) => {
     const navigate = useNavigate ();
 
     const handleClick = () => {
-    const x = event.id; 
-    console.log({x});
-    navigate(`/Agenda/${x}`);
+        if(handleCallback){
+            handleCallback();
+            return
+        }
+        navigate(`/Agenda/${event.id}`)
+    };
 
-    
-  };
+
   return (
     <button className="event-card" onClick={handleClick}>
       <h3>{event.name}</h3>

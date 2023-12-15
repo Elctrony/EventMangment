@@ -9,7 +9,7 @@ let agendaId=0;
 const Agenda = ({EventId}) => {
     const {id}= useParams();
     agendaId= id;
-    console.log(agendaId);
+    console.log("From Agenda: "+agendaId);
 
   const [agendaItems, setAgendaItems] = useState([
     { id: 1,Eventid:1, time: '10:00 AM', description: 'Opening Ceremony' },
@@ -37,7 +37,7 @@ const Agenda = ({EventId}) => {
     <div>
       <h2>Agenda</h2>
       <ul>
-        {agendaItems.map((item) => item.Eventid === agendaId?(
+        {agendaItems.map((item) => (
             <li key={item.id} className='List'>
                 {item.time} - {item.description}
                 <button onClick={() => handleEdit(item.id,prompt('Enter new time:', item.time), prompt('Enter new description:'))} className='Button'>
@@ -45,7 +45,7 @@ const Agenda = ({EventId}) => {
                 </button>
                 <button onClick={() => handleRemove(item.id)} className='Button'>Remove</button>
             </li>
-        ):'')}
+        ))}
       </ul>
       <button onClick={() => handleAdd({ id: Date.now(), time: '12:00 PM', description: 'New Item' })} className='Button'>
         Add Item

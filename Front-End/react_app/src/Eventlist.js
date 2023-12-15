@@ -12,11 +12,11 @@ const eventsData = [
 
 
 
-const EventList = () => {
+const EventList = ({cardCallback}) => {
   return (
     <div className = "Eventlist">
         {eventsData.map((event) => (
-          <EventCard key={event.id} event={event}/>
+          <EventCard  handleCallback={cardCallback} key={event.id} event={event}/>
         ))}
     </div>
   );
