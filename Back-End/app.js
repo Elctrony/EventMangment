@@ -8,13 +8,9 @@ const pool = require('./db');
 app.use(express.json());
 app.use(cors());
 
-
 //pool.query("INSERT INTO users")
 
-pool.query(`INSERT INTO Persons (PersonID, LastName,FirstName, Address, City,)
-VALUES (123456, 'Tom B. Erichsen', 'Skagen 21', 'Stavanger',  'Norway');`).then((res)=>{
-   console.log(res)
-});
+
 
 /*
 INSERT INTO Persons (PersonID, LastName,FirstName, Address, City,)

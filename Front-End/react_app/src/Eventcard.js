@@ -20,7 +20,14 @@ const EventCard = ({event, handleCallback}) => {
   return (
     <button className="event-card" onClick={handleClick}>
       <h3>{event.name}</h3>
+        <p>{event.description}</p>
+        <p>{event.venue}</p>
       <p>Date: {event.date}</p>
+        <div className="time">
+            <p>{event.sttime}</p>
+            <p>{event.endtime}</p>
+
+        </div>
     </button>
   );
 };

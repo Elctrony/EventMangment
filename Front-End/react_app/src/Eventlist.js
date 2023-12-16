@@ -4,10 +4,10 @@ import EventCard from './Eventcard';
 import './Eventlist.css'
 
 const eventsData = [
-  { id: 1, name: 'Event 1', date: '2023-01-01' },
-  { id: 2, name: 'Event 2', date: '2023-02-01' },
-  { id: 3, name: 'Event 3', date: '2023-12-17' },
-  { id: 4, name: 'Event 4', date: '2024-1-6' },
+  { id: 1, name: 'Event 1', date: '2023-01-01',description:'Event about rocket science',venue:'Masrah el giza' ,sttime:'12:00PM',endtime:'8:00PM'},
+  { id: 2, name: 'Event 2', date: '2023-02-01',description:'Event about rocket science',venue:'Masrah el giza' ,sttime:'12:00PM',endtime:'8:00PM' },
+  { id: 3, name: 'Event 3', date: '2023-12-17' ,description:'Event about rocket science' ,venue:'Masrah el giza',sttime:'12:00PM',endtime:'8:00PM'},
+  { id: 4, name: 'Event 4', date: '2024-1-6',description:'Event about rocket science' ,venue:'Masrah el giza' ,sttime:'12:00PM',endtime:'8:00PM'},
 ];
 
 
