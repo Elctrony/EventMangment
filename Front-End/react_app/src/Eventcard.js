@@ -10,7 +10,7 @@ const EventCard = ({event, handleCallback}) => {
 
     const handleClick = () => {
         if(handleCallback){
-            handleCallback();
+            handleCallback(event.id);
             return
         }
         navigate(`/Agenda/${event.id}`)
