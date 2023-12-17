@@ -5,6 +5,7 @@ import EventList from './Eventlist';
 import Agenda from './Agenda';
 import React, { useState } from 'react';
 import Sponsors from './Sponsors';
+import EventManager from './EventManager';
 import Offer from './Offer';
 import {
     BrowserRouter,
@@ -26,7 +27,7 @@ function App () {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path ="/" element={<Sponsors/>}/>
+                    <Route path ="/" element={<EventManager/>}/>
                     <Route path="/Offer/:id" element={<Offer/>} />
                     <Route path="/Agenda/:id" element={<Agenda />} />
                     <Route path="/Venue" element={<VenueList />} />

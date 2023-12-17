@@ -1,0 +1,14 @@
+body{
+    font-family :'Gill Sans MT';
+    background-color: aliceblue;
+    margin: 1em;
+    margin-top: 10px;
+}
+.box{
+    margin-left:10px;
+    border-radius: 1em;
+    border-style:double
+}
+.Line{
+    margin: 10px;
+}
