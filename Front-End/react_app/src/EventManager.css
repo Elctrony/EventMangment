@@ -9,6 +9,10 @@ body{
     border-radius: 1em;
     border-style:double
 }
+.time{
+    display: flex;
+    justify-content: center;
+}
 .Line{
     margin: 10px;
 }

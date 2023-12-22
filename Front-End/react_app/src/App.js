@@ -15,6 +15,7 @@ import {
 
 
 import Venue from "./Venue";
+import Eventlist from "./Eventlist";
 
 const TestCall = () => {
 console.log('test');
@@ -27,7 +28,8 @@ function App () {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path ="/" element={<EventManager/>}/>
+                    <Route path="/" element={<Eventlist/>}/>
+                    <Route path ="/add-event" element={<EventManager/>}/>
                     <Route path="/Offer/:id" element={<Offer/>} />
                     <Route path="/Agenda/:id" element={<Agenda />} />
                     <Route path="/Venue" element={<VenueList />} />

@@ -7,6 +7,7 @@ const eventsController = require('../controller/events');
 
 router.get('/events',eventsController.getEvents);
 router.get('/agenda/:id',eventsController.getAgenda);
+router.post('/add-event',eventsController.addEvent);
 
 
 module.exports = router;

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Venues</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    .filter-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-select {
+      width: 48%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .filter-select option {
+      background-color: #fff;
+    }
+
+    .venues-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .venue-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .venue-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .venue-details {
+      padding: 10px 15px;
+    }
+
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .select-button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .price {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      margin: 10px 0px;
+    
+    }
+
+    .star {
+      color: #f39c12;
+      margin-right: 5px;
+      font-size: 24px ;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Available Venues</h1>
+
+  <div class="filter-section">
+    <select class="filter-select" id="locationFilter">
+      <option value="">All Locations</option>
+      <option value="City A">City A</option>
+      <option value="City B">City B</option>
+      <!-- Add more locations as needed -->
+    </select>
+
+    <select class="filter-select" id="priceFilter">
+      <option value="">All Prices</option>
+      <option value="500">$500 and below</option>
+      <option value="700">$700 and below</option>
+      <!-- Add more price ranges as needed -->
+    </select>
+  </div>
+
+  <div class="venues-grid">
+    <!-- Venue 1 -->
+    <div class="venue-card" data-location="City A" data-price="500" data-rating="4.5">
+      <img class="venue-image" src="../public/venue1.jpg" alt="Venue 1">
+      <div class="venue-details">
+        <h2>Venue 1</h2>
+        <p>Location: City A</p>
+        <p>Capacity: 100 people</p>
+        <p class="price">Price: $500</p>
+        <div class="rating">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span> <!-- Adjust based on the rating -->
+        </div>
+        <button class="select-button" onclick="selectVenue('Venue 1')">Select</button>
+      </div>
+    </div>
+
+    <!-- Venue 2 -->
+    <div class="venue-card" data-location="City B" data-price="700" data-rating="4.0">
+      <img class="venue-image" src="../public/venue2.jpg" alt="Venue 2">
+      <div class="venue-details">
+        <h2>Venue 2</h2>
+        <p>Location: City B</p>
+        <p>Capacity: 150 people</p>
+        <p class="price">Price: $700</p>
+        <div class="rating">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span> <!-- Adjust based on the rating -->
+        </div>
+        <button class="select-button" onclick="selectVenue('Venue 2')">Select</button>
+      </div>
+    </div>
+
+    <!-- Add more venues as needed -->
+
+  </div>
+</div>
+
+<script>
+  function selectVenue(venueName) {
+    alert("Venue selected: " + venueName);
+    // You can customize this function to perform any action when a venue is selected.
+    // For example, you can navigate to a new page or trigger additional JavaScript logic.
+  }
+
+  // Function to filter venues based on location and price
+  function filterVenues() {
+    var locationFilter = document.getElementById('locationFilter').value;
+    var priceFilter = document.getElementById('priceFilter').value;
+
+    var venueCards = document.querySelectorAll('.venue-card');
+
+    venueCards.forEach(function(card) {
+      var location = card.getAttribute('data-location');
+      var price = parseInt(card.getAttribute('data-price'));
+
+      var locationMatch = locationFilter === '' || location === locationFilter;
+      var priceMatch = priceFilter === '' || price <= parseInt(priceFilter);
+
+      if (locationMatch && priceMatch) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Attach event listeners to the filter selects
+  document.getElementById('locationFilter').addEventListener('change', filterVenues);
+  document.getElementById('priceFilter').addEventListener('change', filterVenues);
+
+  // Initial filter when the page loads
+  filterVenues();
+</script>
+
+</body>
+</html>

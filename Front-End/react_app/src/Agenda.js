@@ -1,9 +1,10 @@
 // Agenda.js
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import './Agenda.css'
+import moment from "moment/moment";
 
 let agendaId=0;
 const Agenda = ({EventId}) => {
@@ -11,13 +12,29 @@ const Agenda = ({EventId}) => {
     agendaId= id;
     console.log("From Agenda: "+agendaId);
 
-  const [agendaItems, setAgendaItems] = useState([
-    { id: 1,Eventid:1, time: '10:00 AM', description: 'Opening Ceremony' },
-    { id: 2,Eventid:1, time: '11:00 AM', description: 'Panel Discussion' },
-    // Add more initial agenda items as needed
-  ]);
+  const [agendaItems, setAgendaItems] = useState([]);
 
-  const handleEdit = (id,updatedTime, updatedDescription) => {
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://localhost:8080/agenda/${agendaId}`);
+                const agendaJson = await response.json();
+                const agenda = JSON.parse(agendaJson);
+                console.log(agenda);
+                agenda.forEach(one=>{
+                    let myMoment = moment(`1970-01-01T${one.sttime}`)
+                    one.sttime =  myMoment.format('HH:mm');
+
+                })
+                setAgendaItems(agenda);
+            } catch (error) {
+                console.error('Error fetching agenda:', error);
+            }
+        };
+
+        fetchData();
+    }, [agendaId]);
+    const handleEdit = (id,updatedTime, updatedDescription) => {
     setAgendaItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id ? { ...item,time:updatedTime, description: updatedDescription } : item
@@ -39,8 +56,8 @@ const Agenda = ({EventId}) => {
       <ul>
         {agendaItems.map((item) => (
             <li key={item.id} className='List'>
-                {item.time} - {item.description}
-                <button onClick={() => handleEdit(item.id,prompt('Enter new time:', item.time), prompt('Enter new description:'))} className='Button'>
+                Start Time: {item.sttime} - Duration : {item.duration} Minutes - {item.description}
+                <button onClick={() => handleEdit(item.id,prompt('Enter new time:', item.sttime), prompt('Enter new description:',item.description))} className='Button'>
                 Edit
                 </button>
                 <button onClick={() => handleRemove(item.id)} className='Button'>Remove</button>

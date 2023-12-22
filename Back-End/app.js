@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app =express();
 const cors = require('cors');
@@ -7,8 +8,19 @@ const events = require('./router/events');
 
 const pool = require('./db');
 
-app.use(express.json());
-app.use(cors());
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+//app.use(cors());
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+        'Access-Control-Allow-Methods',
+        'OPTIONS, GET, POST, PUT, PATCH, DELETE'
+    );
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
+
 
 app.use(events)
 app.listen(8080,()=>{

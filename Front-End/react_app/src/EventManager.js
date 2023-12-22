@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './EventManager.css'
 
 const EventManager = () => {
-  const [events, setEvents] = useState([]);
+  //const [events, setEvents] = useState([]);
   const [newEvent, setNewEvent] = useState({
     name: '',
     description: '',
@@ -15,8 +15,10 @@ const EventManager = () => {
   };
 
   const handleAddEvent = () => {
-    setEvents((prevEvents) => [...prevEvents, newEvent]);
+    // setEvents((prevEvents) => [...prevEvents, newEvent]);
+    fetch()
     setNewEvent({ name: '', description: '', date: '' });
+
   };
 
   return (
@@ -58,8 +60,37 @@ const EventManager = () => {
           />
         </label>
       </div>
+        <div className='time'>
+
+            <div className='Line'>
+                <label>
+                    Start Time:
+                    <input
+                        type="time"
+                        name="sttime"
+                        value={newEvent.sttime}
+                        onChange={handleInputChange}
+                        className='box'
+                    />
+                </label>
+            </div>
+
+            <div className='Line'>
+                <label>
+                    End Time:
+                    <input
+                        type="time"
+                        name="sttime"
+                        value={newEvent.endtime}
+                        onChange={handleInputChange}
+                        className='box'
+                    />
+                </label>
+            </div>
+        </div>
+
       <button onClick={handleAddEvent} style={{borderRadius:'1em'}}>Add Event</button>
-      <div>
+      {/*<div>
         <h2>Events:</h2>
         <ul>
           {events.map((event, index) => (
@@ -70,7 +101,7 @@ const EventManager = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </div>*/}
     </div>
   );
 };

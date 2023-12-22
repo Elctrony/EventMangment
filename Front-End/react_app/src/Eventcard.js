@@ -10,20 +10,20 @@ const EventCard = ({event, handleCallback}) => {
 
     const handleClick = () => {
         if(handleCallback){
-            handleCallback(event.id);
+            handleCallback(event.eventid);
             return
         }
-        navigate(`/Agenda/${event.id}`)
+        navigate(`/Agenda/${event.eventid}`)
     };
 
 
   return (
     <button className="event-card" onClick={handleClick}>
-      <h3>{event.name}</h3>
+      <h3>{event.eventname}</h3>
         <p>{event.description}</p>
-        <p>{event.venue}</p>
+        <p>{event.name}</p>
       <p>Date: {event.date}</p>
-        <div className="time">
+        <div className="event-time">
             <p>{event.sttime}</p>
             <p>{event.endtime}</p>
 

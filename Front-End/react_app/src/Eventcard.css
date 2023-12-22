@@ -5,8 +5,8 @@ border-radius: 1em;
 margin: 20px;
 width: 60%;
 }
-.time{
+.event-time{
     display: flex;
     justify-content: space-evenly;
-    align-content: center;
+
 }

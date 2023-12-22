@@ -2,9 +2,13 @@ body{
     background-color:blanchedalmond;
 }
 .List{
+    display: block;
     background-color: aliceblue;
     margin-top: 10px;
     height: auto;
+    border-color: black;
+    border-radius: 1em;
+    border-style: solid;
 }
 .Button{
     border-radius: 1em;
