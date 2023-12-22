@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            margin-bottom: 16px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Event Registration</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="attend-id">Attendee Id:</label>
+        <input type="number" id="attend-id" name="Attendee Id" required>
+
+        <label for="ticketType">Ticket Type:</label>
+        <select id="ticketType" name="ticketType">
+            <option value="general">General Admission</option>
+            <option value="vip">VIP</option>
+            <option value="speaker">Speaker</option>
+        </select>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+</body>
+</html>

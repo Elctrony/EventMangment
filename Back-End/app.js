@@ -6,6 +6,8 @@ const cors = require('cors');
 
 const events = require('./router/events');
 
+const venues = require('./router/venues')
+
 const pool = require('./db');
 
 app.use(bodyParser.json())
@@ -23,6 +25,8 @@ app.use((req, res, next) => {
 
 
 app.use(events)
+app.use(venues)
+
 app.listen(8080,()=>{
     console.log("server is running in 8080");
 })
