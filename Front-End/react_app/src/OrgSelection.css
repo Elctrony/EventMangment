@@ -1,0 +1,22 @@
+.team-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .team-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+    width: 200px;
+    margin-right: 10px;
+  }
+  
+  .team-box:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .selected {
+    background-color: #a0c0ff;
+  }
+  
