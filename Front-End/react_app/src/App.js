@@ -8,6 +8,9 @@ import Sponsors from './Sponsors';
 import EventManager from './EventManager';
 import Offer from './Offer';
 import OrganizingTeamPage from './OrgSelection';
+import VenuePage from './AddVenue';
+import AddOrgTeam from './AddOrgTeam';
+import Dashboard from './DashBoard';
 
 import {
     BrowserRouter,
@@ -31,12 +34,14 @@ function App () {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<OrganizingTeamPage/>}/>
+                    <Route path="/" element={<Dashboard/>}/>
                     <Route path ="/add-event" element={<EventManager/>}/>
                     <Route path="/offer/:id" element={<Offer/>} />
                     <Route path="/agenda/:id" element={<Agenda />} />
                     <Route path="/venue" element={<VenueList />} />
                     <Route path="/signup" element={<SignupForm/>}/>
+                    <Route path="/AddVenue" element={<VenuePage/>}/>
+                    <Route path="/AddOrgTeam" element={<AddOrgTeam/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

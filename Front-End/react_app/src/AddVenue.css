@@ -1,0 +1,35 @@
+
+.form-container {
+    margin-bottom: 20px;
+  }
+  
+  form {
+    max-width: 300px; 
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  button:hover{
+    scale: 1.2;
+    transition-duration: 0.8s;
+  }
+
+  
