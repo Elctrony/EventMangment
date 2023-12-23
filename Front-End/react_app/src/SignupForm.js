@@ -10,7 +10,6 @@ const SignupForm = () => {
         phone: '',
         email: '',
         password: '',
-        confirmPassword: '',
     });
 
     const { user, setUser } = useUser();
@@ -31,13 +30,22 @@ const SignupForm = () => {
     };
 
     // Handle form submission
-    const handleSignup = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
 
         // Perform signup logic here
         // console.log('Form Data:', formData);
-        console.log(JSON.stringify(formData));
+        console.log();
         // Reset the form after submission (optional)
+        let response= await fetch('http://localhost:8080/add-event-manger',{
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+        const responseData = await response.json();
+        console.log('Response data:', responseData);
         setFormData({
             fname: '',
             lname: '',
@@ -105,17 +113,7 @@ const SignupForm = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        <div className="field input-field">
-                            <input
-                                type="password"
-                                placeholder="Confirm password"
-                                className="password"
-                                name="confirmPassword"
-                                value={formData.confirmPassword}
-                                onChange={handleInputChange}
-                            />
-                            <i className='bx bx-hide eye-icon'></i>
-                        </div>
+
 
                         <div className="field button-field">
                             <button type="submit">Signup</button>

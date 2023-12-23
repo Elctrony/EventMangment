@@ -40,7 +40,7 @@ exports.addEventManger = async (req,res,next)=>{
     let lname = req.body.lname;
     let phone = req.body.phone;
     let email = req.body.email;
-    let password = req.body.pass;
+    let password = req.body.password;
     console.log(req.body);
     try{
         let newid = await  eventsmodel.addEventManger(fname,lname,phone,email,password);

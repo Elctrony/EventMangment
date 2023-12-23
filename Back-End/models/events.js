@@ -37,9 +37,8 @@ exports.addEventManger =async (fname,lname,phone,email,password)=>{
             id = idres.rows[0].max+1;
         }
 
-        let qur= 'INSERT INTO eventmanager('+
-            'id, fname, lname, phone, email, password) '+
-            `VALUES (${id},'${fname}' ,'${lname}', '${phone}', '${email}, ${password});`;
+        let qur= "INSERT INTO eventManager (Fname, Lname, Phone, Email, Password) VALUES"
+            +` ('${fname}' ,'${lname}', '${phone}', '${email}', '${password}');`;
             console.log(qur);
         let res = await pool.query(qur)
         console.log(res);
