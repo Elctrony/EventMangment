@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import Sponsors from './Sponsors';
 import EventManager from './EventManager';
 import Offer from './Offer';
+import OrganizingTeamPage from './OrgSelection';
 
 import {
     BrowserRouter,
@@ -30,7 +31,7 @@ function App () {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Eventlist/>}/>
+                    <Route path="/" element={<OrganizingTeamPage/>}/>
                     <Route path ="/add-event" element={<EventManager/>}/>
                     <Route path="/offer/:id" element={<Offer/>} />
                     <Route path="/agenda/:id" element={<Agenda />} />
