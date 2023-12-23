@@ -1,5 +1,7 @@
 const eventsmodel = require('../models/events');
 
+const bcrypt = require('bcryptjs')
+
 exports.getEvents = (req,res,next)=>{
     eventsmodel.getAllEvents().then((events)=>{
         const jsonResult =JSON.stringify(events);
@@ -31,4 +33,24 @@ exports.addEvent=(req,res,next)=>{
     console.log(name);
     console.log(description);*/
     res.send("SEND!!");
+}
+
+exports.addEventManger = async (req,res,next)=>{
+    let fname = req.body.fname;
+    let lname = req.body.lname;
+    let phone = req.body.phone;
+    let email = req.body.email;
+    let password = req.body.pass;
+    console.log(req.body);
+    try{
+        let newid = await  eventsmodel.addEventManger(fname,lname,phone,email,password);
+        res.json({
+            'message': 'A new event Manger has been added',
+            'id':newid
+        });
+    }catch (e){
+        console.log(e);
+        res.status(500).json({'error':'There is a problem in the server'})
+    }
+
 }

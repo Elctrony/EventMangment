@@ -1,0 +1,135 @@
+import React, { useState } from 'react';
+import './SignupForm.css'; // Import your CSS file
+
+import {useUser} from './UserContext'
+const SignupForm = () => {
+    // State to manage form data
+    const [formData, setFormData] = useState({
+        fname: '',
+        lname: '',
+        phone: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
+
+    const { user, setUser } = useUser();
+
+    const handleUpdateUser = () => {
+        setUser({
+            userId: '123',
+            userType: 'customer',
+            email: 'user@example.com',
+            name: 'John Doe',
+        });
+    };
+
+    // Update form data on input change
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    // Handle form submission
+    const handleSignup = (e) => {
+        e.preventDefault();
+
+        // Perform signup logic here
+        // console.log('Form Data:', formData);
+        console.log(JSON.stringify(formData));
+        // Reset the form after submission (optional)
+        setFormData({
+            fname: '',
+            lname: '',
+            number: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+        });
+    };
+
+    return (
+
+        <section className="scroll">
+            <div className="form manger">
+                <div className="form-content">
+                    <header>Signup</header>
+                    <form onSubmit={handleSignup}>
+                        <div className="field input-field">
+                            <input
+                                type="text"
+                                placeholder="First Name"
+                                className="input"
+                                name="fname"
+                                value={formData.fname}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="field input-field">
+                            <input
+                                type="text"
+                                placeholder="Last Name"
+                                className="input"
+                                name="lname"
+                                value={formData.lname}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="field input-field">
+                            <input
+                                type="text"
+                                placeholder="phone"
+                                className="input"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="field input-field">
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                className="input"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="field input-field">
+                            <input
+                                type="password"
+                                placeholder="Create password"
+                                className="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="field input-field">
+                            <input
+                                type="password"
+                                placeholder="Confirm password"
+                                className="password"
+                                name="confirmPassword"
+                                value={formData.confirmPassword}
+                                onChange={handleInputChange}
+                            />
+                            <i className='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <div className="field button-field">
+                            <button type="submit">Signup</button>
+                        </div>
+                    </form>
+                    <div className="form-link">
+            <span>
+              Already have an account? <a href="#" className="link login-link">Login</a>
+            </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default SignupForm;

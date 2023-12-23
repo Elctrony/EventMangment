@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="893d2e76-129a-4167-a4da-42663d3567e8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/venue.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/venues.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router/venues.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/registration.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/SignupForm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/SignupForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/UserContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Venue.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Venue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Venuelist.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Venuelist.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Venuelist.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Venuelist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +69,8 @@
       <workItem from="1702818557023" duration="10000" />
       <workItem from="1702829150522" duration="3896000" />
       <workItem from="1703176700792" duration="8922000" />
+      <workItem from="1703268450454" duration="2247000" />
+      <workItem from="1703354076780" duration="653000" />
     </task>
     <servers />
   </component>

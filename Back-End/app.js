@@ -10,6 +10,8 @@ const venues = require('./router/venues')
 
 const pool = require('./db');
 
+
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 //app.use(cors());

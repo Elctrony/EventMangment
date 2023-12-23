@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import Sponsors from './Sponsors';
 import EventManager from './EventManager';
 import Offer from './Offer';
+
 import {
     BrowserRouter,
     Routes, // instead of "Switch"
@@ -16,6 +17,7 @@ import {
 
 import Venue from "./Venue";
 import Eventlist from "./Eventlist";
+import SignupForm from "./SignupForm";
 
 const TestCall = () => {
 console.log('test');
@@ -30,9 +32,10 @@ function App () {
                 <Routes>
                     <Route path="/" element={<Eventlist/>}/>
                     <Route path ="/add-event" element={<EventManager/>}/>
-                    <Route path="/Offer/:id" element={<Offer/>} />
-                    <Route path="/Agenda/:id" element={<Agenda />} />
-                    <Route path="/Venue" element={<VenueList />} />
+                    <Route path="/offer/:id" element={<Offer/>} />
+                    <Route path="/agenda/:id" element={<Agenda />} />
+                    <Route path="/venue" element={<VenueList />} />
+                    <Route path="/signup" element={<SignupForm/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
