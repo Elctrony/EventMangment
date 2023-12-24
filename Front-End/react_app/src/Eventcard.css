@@ -10,3 +10,19 @@ width: 60%;
     justify-content: space-evenly;
 
 }
+.select-venue-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.select-venue-button:hover {
+    background-color: #2980b9;
+}

@@ -2,10 +2,11 @@ import React, { createContext, useReducer, useContext } from 'react';
 
 // Define initial state
 const initialState = {
-    userId: null,
-    userType: null,
+    id: null,
+    fname:null,
+    lname:null,
+    phone:null,
     email: null,
-    name: null,
 };
 
 // Create a context

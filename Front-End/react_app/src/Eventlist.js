@@ -4,7 +4,12 @@ import EventCard from './Eventcard';
 import './Eventlist.css'
 import {useState, useEffect} from "react";
 import {forEach} from "react-bootstrap/ElementChildren";
+
+import {useUser} from './UserContext'
+import {useNavigate} from "react-router-dom";
+
 let moment = require('moment');
+
 
 
 const eventsData = [
@@ -18,11 +23,21 @@ const eventsData = [
 
 const EventList = ({cardCallback}) => {
   const [eventList,setEventList] = useState([]);
-
+  const { user, setUser } = useUser();
+  const navigate =useNavigate();
   useEffect(() => {
+    if(!user.id){
+      navigate('/login');
+      return;
+    }
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/events');
+        let url = `http://localhost:8080/events`;
+        if(user.id){
+          url = url+`/${user.id}`;
+        }
+        console.log(url);
+        const response = await fetch(url);
         const data = await response.json();
         const events = JSON.parse(data);
         console.log(events);
@@ -45,12 +60,19 @@ const EventList = ({cardCallback}) => {
     fetchData();
   }, []); // Empty dependency array ensures this useEffect runs only once after the initial render
 
+  const handleAddEvent=()=>{
+    navigate(`/add-event`)
+  }
   return (
-    <div className = "Eventlist">
-        {eventList.map((event) => (
-          <EventCard  handleCallback={cardCallback} key={event.eventid} event={event}/>
-        ))}
-    </div>
+      <div>
+        <div className="Eventlist">
+          {eventList.map((event) => (
+              <EventCard handleCallback={cardCallback} key={event.eventid} event={event} />
+          ))}
+        </div>
+
+        <button className="add-event-button" onClick={handleAddEvent}>Add Event</button>
+      </div>
   );
 };
 

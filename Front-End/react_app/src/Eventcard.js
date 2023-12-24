@@ -16,13 +16,22 @@ const EventCard = ({event, handleCallback}) => {
         navigate(`/Agenda/${event.eventid}`)
     };
 
+    const handleVenue=()=>{
+        navigate(`/venue?eventid=${event.eventid}`)
+    }
 
   return (
-    <button className="event-card" onClick={handleClick}>
+    <button className="event-card" /*onClick={handleClick}*/>
       <h3>{event.eventname}</h3>
         <p>{event.description}</p>
-        <p>{event.name}</p>
-      <p>Date: {event.date}</p>
+        {event.name ? (
+            <p>{event.name}</p>
+        ) : (
+            <button className="select-venue-button" onClick={handleVenue}>
+                Select Venue
+            </button>
+        )}
+         <p>Date: {event.date}</p>
         <div className="event-time">
             <p>{event.sttime}</p>
             <p>{event.endtime}</p>

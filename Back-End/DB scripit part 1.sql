@@ -8,7 +8,7 @@ use eventPlannerDB
 
 create table Venue
 (
-ID int              ,
+ID SERIAL PRIMARY KEY ,
 Name  nvarchar(50) not null,
 Location nvarchar(50) not null, 
 Capacity int  not null, 
@@ -23,17 +23,12 @@ primary key (ID),
 
 create table organizingTeam
 (
-ID int              ,
-Name  nvarchar(50) not null,
-hiringCost  nvarchar(50) , 
-Rate int  , 
-leaderID int ,
+ID SERIAL PRIMARY KEY ,
+Name  varchar(50) not null,
+hiringCost  int ,
+Rate int ,
 
 primary key (ID),
-
-foreign key (leaderID) references Organizer
-ON DELETE no action
-ON UPDATE no action,
 
 )
 
@@ -58,7 +53,7 @@ ON UPDATE cascade ,
 
 create table Event
 (
-EventID int ,
+    EventID SERIAL PRIMARY KEY,
 Name varchar(50) not null,
 Description varchar(50) ,
 Date date ,

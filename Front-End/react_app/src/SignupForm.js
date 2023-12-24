@@ -12,16 +12,6 @@ const SignupForm = () => {
         password: '',
     });
 
-    const { user, setUser } = useUser();
-
-    const handleUpdateUser = () => {
-        setUser({
-            userId: '123',
-            userType: 'customer',
-            email: 'user@example.com',
-            name: 'John Doe',
-        });
-    };
 
     // Update form data on input change
     const handleInputChange = (e) => {
@@ -37,7 +27,7 @@ const SignupForm = () => {
         // console.log('Form Data:', formData);
         console.log();
         // Reset the form after submission (optional)
-        let response= await fetch('http://localhost:8080/add-event-manger',{
+        let response= await fetch('http://localhost:8080/add-event-manager',{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json',

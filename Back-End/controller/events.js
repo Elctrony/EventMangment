@@ -10,6 +10,16 @@ exports.getEvents = (req,res,next)=>{
     })
 
 }
+exports.getEventsByID =(req,res,next)=>{
+    let id = req.params.id;
+    console.log(id);
+    eventsmodel.getEventsById(id).then((events)=>{
+        const jsonResult =JSON.stringify(events);
+        console.log("GET event by ID request");
+        res.json(jsonResult);
+    })
+
+}
 
 exports.getAgenda= (req,res,nex)=>{
     let id = req.params.id;
@@ -20,37 +30,41 @@ exports.getAgenda= (req,res,nex)=>{
     })
 }
 
-exports.addEvent=(req,res,next)=>{
-    let id = req.body.id;
+exports.addEvent=async (req,res,next)=>{
+    let mangerId = req.body.id;
     let name = req.body.name;
     let description = req.body.description;
     let date  =req.body.date;
     let sttime = req.body.sttime;
     let endtime=  req.body.endtime;
+    console.log(req.body);
+    try {
+        let respoen = await eventsmodel.addEvent(mangerId, name, description, date, sttime, endtime);
 
+        res.json({message: 'Event Has been added successfully'})
+    }catch (e) {
+        res.status(500).json({message:'There is error in the Server'})
+    }
   /*  console.log(req.body);
     console.log(id);
     console.log(name);
     console.log(description);*/
-    res.send("SEND!!");
+   // res.send("SEND!!");
 }
 
-exports.addEventManger = async (req,res,next)=>{
-    let fname = req.body.fname;
-    let lname = req.body.lname;
-    let phone = req.body.phone;
-    let email = req.body.email;
-    let password = req.body.password;
-    console.log(req.body);
-    try{
-        let newid = await  eventsmodel.addEventManger(fname,lname,phone,email,password);
-        res.json({
-            'message': 'A new event Manger has been added',
-            'id':newid
-        });
-    }catch (e){
-        console.log(e);
-        res.status(500).json({'error':'There is a problem in the server'})
-    }
 
+exports.addEventVenue = async (req,res,next)=>{
+    console.log("Add Event Venue");
+    console.log(req.body);
+
+    let venueid = req.body.venueid;
+    let eventid = req.body.eventid;
+    //let managerid = req.body.managerid;
+    try {
+        let respoen = await eventsmodel.addEventVenue(eventid,venueid);
+
+        res.json({message: 'Venue Has been set up successfully'})
+    }catch (e) {
+        res.status(500).json({message:'There is error in the Server'})
+    }
 }

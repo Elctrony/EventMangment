@@ -1,18 +1,51 @@
-body{
-    font-family :'Gill Sans MT';
-    background-color: aliceblue;
-    margin: 1em;
-    margin-top: 10px;
+.event-form {
+    height: 100%;
+    width: 50%;
+    margin: 5% auto;
+    padding: 20px;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
-.box{
-    margin-left:10px;
-    border-radius: 1em;
-    border-style:double
+
+h1 {
+    color: #3498db;
 }
-.time{
-    display: flex;
-    justify-content: center;
+
+.form-line {
+    margin: 15px 0;
+    text-align: left;
 }
-.Line{
-    margin: 10px;
+
+.input-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.time {
+    display: flex; /* Display children in a row */
+    justify-content: space-between; /* Add space between Start Time and End Time */
+}
+
+.submit-button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #2980b9;
 }

@@ -9,6 +9,17 @@ exports.getAllEvents =async ()=>{
        console.log(e);
    }
 }
+exports.getEventsById=async (id)=>{
+    try{
+        let res= await pool.query(`SELECT * FROM event e
+                                   LEFT JOIN venue v ON e.venueid = v.id
+                                   WHERE e.managerid = ${id} AND (e.venueid = v.id OR e.venueid IS NULL);
+                                   `);
+        return res.rows;
+    }catch (e){
+        console.log(e);
+    }
+}
 
 exports.getAgenda=async (id)=>{
     try{
@@ -19,33 +30,25 @@ exports.getAgenda=async (id)=>{
     }
 }
 
-exports.addEvent = async (mangerId,name)=>{
+exports.addEvent = async (mangerId,name,description,date,sttime,endtime)=>{
     try{
-        pool.query(`INSERT INTO Event (mangerId, Name, Description, Date, stTime, endTime, VenueID, orgTeamID) VALUES
-                   (${mangerId}, ${name}, 'Annual Tech Conference', '2023-03-15', '09:00:00', '17:00:00', 1, 1`)
-    }catch (e){
-        console.log(e);
-    }
-}
-
-exports.addEventManger =async (fname,lname,phone,email,password)=>{
-    try{
-        let idres= await pool.query('SELECT MAX(id) from eventmanager')
-
-        let id = 1;
-        if(idres.rows[0] && idres.rows[0].max){
-            id = idres.rows[0].max+1;
-        }
-
-        let qur= "INSERT INTO eventManager (Fname, Lname, Phone, Email, Password) VALUES"
-            +` ('${fname}' ,'${lname}', '${phone}', '${email}', '${password}');`;
-            console.log(qur);
-        let res = await pool.query(qur)
+        let res=await pool.query(`INSERT INTO public.event(
+	                name, description, date, sttime, endtime, managerid)
+	                VALUES ('${name}','${description}', '${date}', '${sttime}', '${endtime}', '${mangerId}');`);
         console.log(res);
-        if(res.rows){
-            return id;
-        }
+        return res;
     }catch (e){
         console.log(e);
     }
 }
+
+exports.addEventVenue = async (eventid,venueid)=>{
+    try{
+        let res=await pool.query(`UPDATE event SET venueid=${venueid} WHERE eventid=${eventid};`);
+        console.log(res);
+        return res;
+    }catch (e){
+        console.log(e);
+    }
+}
+

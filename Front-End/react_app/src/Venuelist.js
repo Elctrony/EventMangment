@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import  './Venuelist.css'
 import  VenueCard from './Venue'
 import moment from "moment/moment";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
+import alert from "bootstrap/js/src/alert";
 
 const VenueList = ({ venues, onSelect }) => (
     <div className="venues-grid">
@@ -17,8 +19,8 @@ const FilterSection = ({ onFilterChange }) => {
     const [locationOptions,setLocationOptions]=useState([]);
     const [ratings, setRatings] = useState([4, 3, 2, 1]); // Add the desired rating options
 
-
     useEffect(() => {
+
         setPriceOptions([50,100,250,500,1000,1500,2000]);
         const fetchData= async ()=>{
             try {
@@ -64,6 +66,8 @@ const FilterSection = ({ onFilterChange }) => {
 const AvailableVenues = () => {
     const [filteredVenues, setFilteredVenues] = useState([]);
 
+    const navigate = useNavigate();
+
     const venues = [
         {id:1, name: 'Venue 1', location: 'Cairo', capacity: 100, price: 500, rating: 1 },
         {id:2, name: 'Venue 2', location: 'Giza', capacity: 150, price: 600, rating: 2.0 },
@@ -77,10 +81,29 @@ const AvailableVenues = () => {
         // Add more venues as needed
     ];
 
-    const selectVenue = (venueName) => {
-        alert('Venue selected: ' + venueName);
-        // Customize this function to perform any action when a venue is selected.
-        // For example, you can navigate to a new page or trigger additional logic.
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    let eventId = queryParams.get('eventid');
+    if(eventId){
+        eventId= parseInt(eventId);
+    }
+    console.log('event',eventId)
+
+    const selectVenue = async(venuId) => {
+        let body={
+            'venueid':venuId,
+            'eventid':eventId
+        }
+        console.log(body);
+        await fetch('http://localhost:8080/add-venue-event',{
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body)
+        })
+        navigate('/');
+
     };
 
     const fetchData = async ()=>{

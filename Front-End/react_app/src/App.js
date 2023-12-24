@@ -19,6 +19,7 @@ import {
 import Venue from "./Venue";
 import Eventlist from "./Eventlist";
 import SignupForm from "./SignupForm";
+import LoginForm from "./LoginForm";
 
 const TestCall = () => {
 console.log('test');
@@ -31,12 +32,14 @@ function App () {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<OrganizingTeamPage/>}/>
+                    <Route path="/" element={<EventList/>}/>
+                    <Route path="/select-org/:id" element={<OrganizingTeamPage/>}/>
                     <Route path ="/add-event" element={<EventManager/>}/>
                     <Route path="/offer/:id" element={<Offer/>} />
                     <Route path="/agenda/:id" element={<Agenda />} />
                     <Route path="/venue" element={<VenueList />} />
                     <Route path="/signup" element={<SignupForm/>}/>
+                    <Route path="/login" element={<LoginForm/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
