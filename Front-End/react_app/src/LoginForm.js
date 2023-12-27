@@ -41,7 +41,7 @@ const LoginForm = () => {
             let user= responseData.user;
             console.log(user);
             setUser(user);
-            navigate('/');
+            navigate('/events');
             return;
         }
         alert(responseData.message);
