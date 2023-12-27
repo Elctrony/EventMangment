@@ -37,7 +37,8 @@ function App () {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Dashboard/>}/>
+                    <Route path="/" element={<EventList/>}/>
+
                     <Route path="/events" element={<EventList/>}/>
                     <Route path ="/add-event" element={<EventManager/>}/>
                     <Route path="/offer/:id" element={<Offer/>} />
@@ -47,8 +48,10 @@ function App () {
                     <Route path="/login" element={<LoginForm/>}/>
                     <Route path="/expenses/:id" element={<EventExpenses/>}/>
                     <Route path="/organizing" element={<OrganizingTeamPage/>}/>
+{/*
+                    <Route path="/" element={<Dashboard/>}/>
                     <Route path="/AddVenue" element={<VenuePage/>}/>
-                    <Route path="/AddOrgTeam" element={<AddOrgTeam/>}/>
+                    <Route path="/AddOrgTeam" element={<AddOrgTeam/>}/>*/}
                 </Routes>
             </BrowserRouter>
         </div>
