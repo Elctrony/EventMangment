@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 
 import './Agenda.css'
 import moment from "moment/moment";
+import PopupForm from './AddAgenda'
 
 let agendaId=0;
 const Agenda = ({EventId}) => {
@@ -47,26 +48,48 @@ const Agenda = ({EventId}) => {
   };
 
   const handleRemove = (id) => {
-    setAgendaItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    setAgendaItems((prevItems) => prevItems.filter((item) => item.sessionid !== id));
+   // alert(`You want to delete Session: ${id}`);
+    fetch('http://localhost:8080/delete-session',
+        {
+            method:'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({sessionid:id})
+        });
   };
+
+    const [isPopupOpen, setPopupOpen] = useState(false);
+
+    const openPopup = () => {
+        setPopupOpen(true);
+    };
+
+    const closePopup = (newItem) => {
+        setPopupOpen(false);
+        window.location.reload();
+    };
+
 
   return (
     <div>
       <h2>Agenda</h2>
       <ul>
         {agendaItems.map((item) => (
-            <li key={item.id} className='List'>
+            <li key={item.sessionid} className='List'>
                 Start Time: {item.sttime} - Duration : {item.duration} Minutes - {item.description}
-                <button onClick={() => handleEdit(item.id,prompt('Enter new time:', item.sttime), prompt('Enter new description:',item.description))} className='Button'>
-                Edit
-                </button>
-                <button onClick={() => handleRemove(item.id)} className='Button'>Remove</button>
+                <button onClick={() => handleRemove(item.sessionid)} className='Button'>Remove</button>
             </li>
         ))}
       </ul>
-      <button onClick={() => handleAdd({ id: Date.now(), time: '12:00 PM', description: 'New Item' })} className='Button'>
+      <button onClick={openPopup} className='Button'>
         Add Item
       </button>
+        <div>
+            {isPopupOpen && <PopupForm eventId={agendaId} onClose={closePopup} />}
+        </div>
+
     </div>
   );
 };

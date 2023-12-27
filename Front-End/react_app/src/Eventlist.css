@@ -1,8 +1,15 @@
-.Eventlist{
-    gap:10px
+
+.event-list {
+    width: 100%;
+    background-color: rgba(255, 235, 205, 0.45);
+
+
 }
 
+
+
 .add-event-button {
+
     background-color: #4caf50; /* Green */
     border: none;
     color: white;

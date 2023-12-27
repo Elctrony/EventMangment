@@ -13,7 +13,9 @@ exports.getVenues = (req,res,next)=>{
     if(q.rating){
         rating =  parseFloat(q.rating);
     }
-
+    if (isNaN(rating) || isNaN(price)) {
+        return res.status(400).json({ error: 'Invalid input format' });
+    }
     venuemodel.getAllVenue({location,price,rating}).then((venues)=>{
         const jsonResult =JSON.stringify(venues);
         console.log("GET venues request");

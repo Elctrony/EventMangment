@@ -1,25 +1,18 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
 import EventCard from './Eventcard';
 import './Eventlist.css'
 import {useState, useEffect} from "react";
-import {forEach} from "react-bootstrap/ElementChildren";
 
 import {useUser} from './UserContext'
 import {useNavigate} from "react-router-dom";
+import DeleteConfirmationModal from "./DeleteEvent";
 
 let moment = require('moment');
 
 
 
-const eventsData = [
-  { id: 1, name: 'Event 1', date: '2023-01-01',description:'Event about rocket science',venue:'Masrah el giza' ,sttime:'12:00PM',endtime:'8:00PM'},
-  { id: 2, name: 'Event 2', date: '2023-02-01',description:'Event about rocket science',venue:'Masrah el giza' ,sttime:'12:00PM',endtime:'8:00PM' },
-  { id: 3, name: 'Event 3', date: '2023-12-17' ,description:'Event about rocket science' ,venue:'Masrah el giza',sttime:'12:00PM',endtime:'8:00PM'},
-  { id: 4, name: 'Event 4', date: '2024-1-6',description:'Event about rocket science' ,venue:'Masrah el giza' ,sttime:'12:00PM',endtime:'8:00PM'},
-];
-
-
+let selectIndx=-1;
+let selectId = -1;
 
 const EventList = ({cardCallback}) => {
   const [eventList,setEventList] = useState([]);
@@ -38,7 +31,10 @@ const EventList = ({cardCallback}) => {
         }
         console.log(url);
         const response = await fetch(url);
+        console.log(response);
         const data = await response.json();
+        console.log(data);
+
         const events = JSON.parse(data);
         console.log(events);
         events.forEach(one=>{
@@ -63,16 +59,85 @@ const EventList = ({cardCallback}) => {
   const handleAddEvent=()=>{
     navigate(`/add-event`)
   }
+
+  const handleDelete=async (index,eventId)=>{
+    if(eventId===-1){
+      return;
+    }
+
+    console.log('EventId id: ',eventId);
+    let body ={
+      id:eventId
+    };
+    console.log(body);
+    try{
+      let respone = await fetch('http://localhost:8080/event',{
+        method: "DELETE",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify(body)
+      });
+      console.log(respone);
+      if(respone.status!==200){
+        alert("There is an error in the request");
+        return;
+      }
+    }catch (e) {
+      console.log(e);
+      alert("There is an error in the request");
+      return;
+    }
+    const updatedEvents = [...eventList];
+    updatedEvents.splice(index, 1);
+    setEventList(updatedEvents);
+  }
+
+
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+
+  const closeDeleteModal = () => {
+    console.log(selectIndx,'Cancel Event: ',selectId);
+    selectIndx=-1;
+    selectId=-1;
+    setDeleteModalOpen(false);
+  };
+
+  const confirmDelete = async () => {
+    // Call the handleDelete function passed as a prop
+    console.log(selectIndx,'Confrim Event: ',selectId);
+    handleDelete(selectIndx,selectId);
+    selectIndx=-1;
+    selectId=-1;
+    setDeleteModalOpen(false);
+
+  };
+
+  const handleClick = (index,id)=>{
+    console.log(index,"Clicked");
+    selectIndx = index;
+    selectId = id;
+    setDeleteModalOpen(true);
+  };
+
   return (
-      <div>
-        <div className="Eventlist">
-          {eventList.map((event) => (
-              <EventCard handleCallback={cardCallback} key={event.eventid} event={event} />
+      <div className="event-list">
+
+          {eventList.map((event,index) => (
+              <div>
+              <EventCard key={event.eventid} handleSelect={()=>handleClick(index,event.eventid)}   event={event}  />
+              </div>
           ))}
-        </div>
 
         <button className="add-event-button" onClick={handleAddEvent}>Add Event</button>
-      </div>
+
+
+      {isDeleteModalOpen?<DeleteConfirmationModal
+          isOpen={isDeleteModalOpen}
+          onCancel={closeDeleteModal}
+          onConfirm={confirmDelete}
+      />:<></>}
+  </div>
   );
 };
 

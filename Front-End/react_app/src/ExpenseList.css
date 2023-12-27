@@ -1,0 +1,90 @@
+/* ExpenseList.css */
+
+.expense-list-container {
+    margin: 20px;
+}
+
+.expense-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f5f5f5; /* Light gray background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.expense-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    /* Hover effect */
+    cursor: pointer;
+}
+
+.expense-item:hover {
+    transform: scale(1.05); /* Scale on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+}
+
+.expense-item.ingoing {
+    background-color: #d7f6d5; /* Light green for ingoing money */
+}
+
+.expense-item.outgoing {
+    background-color: #ffd7d7; /* Light red for outgoing money */
+}
+
+.expense-details {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: bold;
+}
+
+.quantity,
+.price,
+.description {
+    display: block;
+    margin-top: 5px;
+    color: #555;
+}
+
+.amount {
+    font-weight: bold;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button.delete-btn {
+    background-color: #e74c3c; /* Red color for delete button */
+    color: white;
+}
+
+button.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+button.add-btn {
+    background-color: #4caf50; /* Green color for add button */
+    color: white;
+}
+
+button.add-btn:hover {
+    background-color: #45a049;
+}

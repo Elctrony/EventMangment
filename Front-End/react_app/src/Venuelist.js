@@ -3,8 +3,28 @@ import  './Venuelist.css'
 import  VenueCard from './Venue'
 import moment from "moment/moment";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
-import alert from "bootstrap/js/src/alert";
+import './OrgSelection.css';
 
+let selectId=-1;
+
+const SelectConfirmationModal = ({isOpen, onCancel, onConfirm }) => {
+    return (
+        <div className={`modal ${isOpen ? 'open' : ''}`}>
+            <div className="modal-content">
+                <h2>Confirm Selection</h2>
+                <p>Are you sure you want to Select this Team?</p>
+                <div className="modal-buttons">
+                    <button className="cancel-button" onClick={onConfirm}>
+                        Yes, Select
+                    </button>
+                    <button className="yes-delete-button" onClick={onCancel}>
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
 const VenueList = ({ venues, onSelect }) => (
     <div className="venues-grid">
         {venues.map((venue) => (
@@ -65,21 +85,11 @@ const FilterSection = ({ onFilterChange }) => {
 
 const AvailableVenues = () => {
     const [filteredVenues, setFilteredVenues] = useState([]);
+    const [selectedVenue, setSelectVenue] = useState(false)
 
     const navigate = useNavigate();
 
-    const venues = [
-        {id:1, name: 'Venue 1', location: 'Cairo', capacity: 100, price: 500, rating: 1 },
-        {id:2, name: 'Venue 2', location: 'Giza', capacity: 150, price: 600, rating: 2.0 },
-        {id:3, name: 'Venue 3', location: 'October', capacity: 100, price: 700, rating: 3.5 },
-        {id:4, name: 'Venue 4', location: 'Tagmo3', capacity: 150, price: 800, rating: 4.0 },
-        {id:5,name: 'Venue 5', location: 'City A', capacity: 100, price: 900, rating: 5 },
-        {id:6, name: 'Venue 6', location: 'City B', capacity: 150, price: 1000, rating: 2.5 },
-        {id:7, name: 'Venue 7', location: 'October', capacity: 100, price: 1100, rating: 3.5 },
-        {id:8,name: 'Venue 8', location: 'Cairo', capacity: 150, price: 1200, rating: 4.5 },
 
-        // Add more venues as needed
-    ];
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -89,7 +99,14 @@ const AvailableVenues = () => {
     }
     console.log('event',eventId)
 
+    const showAlert= ()=>{
+        alert("You have to select Event first");
+    }
     const selectVenue = async(venuId) => {
+        if(!eventId){
+            showAlert()
+            return;
+        }
         let body={
             'venueid':venuId,
             'eventid':eventId
@@ -144,12 +161,41 @@ const AvailableVenues = () => {
     }, []);
 
 
+    const confirmSelectTeam =async () => {
+        console.log(selectId,"Confirm");
+        await selectVenue(selectId);
+        setSelectVenue(false);
+
+        navigate('/');
+    };
+
+    const closeDeleteModal = () => {
+        console.log(selectId,"Close");
+        selectId=-1
+        setSelectVenue(false);
+    };
+    const handleClick = (id)=>{
+        selectId = id;
+
+        console.log(selectId,"Clicked");
+
+        setSelectVenue(true)
+    };
     return (
+        <>
         <div className="container">
             <h1>Available Venues</h1>
             <FilterSection onFilterChange={filterVenues} />
-            <VenueList venues={filteredVenues} onSelect={selectVenue} />
+            <VenueList venues={filteredVenues} onSelect={handleClick} />
         </div>
+            {selectedVenue && (
+                <SelectConfirmationModal
+                    isOpen={selectedVenue}
+                    onConfirm={confirmSelectTeam}
+                    onCancel={closeDeleteModal}
+                />
+            )}
+        </>
     );
 };
 
