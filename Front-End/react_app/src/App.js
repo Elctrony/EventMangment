@@ -8,6 +8,9 @@ import Sponsors from './Sponsors';
 import EventManager from './EventManager';
 import Offer from './Offer';
 import OrganizingTeamPage from './OrgSelection';
+import VenuePage from './AddVenue';
+import AddOrgTeam from './AddOrgTeam';
+import Dashboard from './DashBoard';
 
 import {
     BrowserRouter,
@@ -34,8 +37,8 @@ function App () {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<EventList/>}/>
-                    <Route path="/select-org/:id" element={<OrganizingTeamPage/>}/>
+                    <Route path="/" element={<Dashboard/>}/>
+                    <Route path="/events" element={<EventList/>}/>
                     <Route path ="/add-event" element={<EventManager/>}/>
                     <Route path="/offer/:id" element={<Offer/>} />
                     <Route path="/agenda/:id" element={<Agenda />} />
@@ -44,6 +47,8 @@ function App () {
                     <Route path="/login" element={<LoginForm/>}/>
                     <Route path="/expenses/:id" element={<EventExpenses/>}/>
                     <Route path="/organizing" element={<OrganizingTeamPage/>}/>
+                    <Route path="/AddVenue" element={<VenuePage/>}/>
+                    <Route path="/AddOrgTeam" element={<AddOrgTeam/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

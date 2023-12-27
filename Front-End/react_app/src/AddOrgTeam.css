@@ -1,0 +1,14 @@
+
+.team-member-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  
+  .team-member-box strong {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
