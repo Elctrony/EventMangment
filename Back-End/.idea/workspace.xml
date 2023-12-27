@@ -4,33 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="893d2e76-129a-4167-a4da-42663d3567e8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/AddAgenda.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/DeleteConfirmationModal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/DeleteEvent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/EventExpenses.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/ExpenseList.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/ExpensesForm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/ExpensesForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/add-agenda.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/venue.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/venue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Agenda.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Agenda.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Agenda.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Agenda.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/EventManager.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/EventManager.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/EventManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/EventManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Eventcard.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Eventcard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Eventcard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Eventcard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Eventlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Eventlist.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Eventlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Eventlist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/OrgSelection.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/OrgSelection.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/OrgSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/OrgSelection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Venuelist.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Venuelist.js" afterDir="false" />
-    </list>
+    <list default="true" id="893d2e76-129a-4167-a4da-42663d3567e8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
