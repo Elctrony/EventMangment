@@ -1,0 +1,62 @@
+.sponsor-offers-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.sponsor-offers-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sponsor-offer-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.sponsor-offer-item:hover {
+    background-color: #f5f5f5;
+}
+
+.offer-details {
+    font-family: Arial, sans-serif;
+}
+
+.offer-details p {
+    margin: 5px 0;
+}
+
+.offer-details strong {
+    margin-right: 5px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.accepted {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.rejected {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.pending {
+    /* Add styles for items with 'Pending' status */
+    background-color: #c0c0c0; /* Adjust the color as needed */
+    border-color: #a0a0a0;
+    color: #333;
+}
+
+.special {
+    /* Add styles for items with 'flg' set to true */
+    background-color: #ffcc00; /* Adjust the color as needed */
+    border-color: #e6b800;
+    color: #333;
+}

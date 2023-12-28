@@ -18,6 +18,10 @@ const EventCard = ({event, handleSelect}) => {
         navigate(`/Agenda/${event.eventid}`)
     };
 
+
+    const handleOffer = ()=>{
+        navigate(`/offer/${event.eventid}`);
+    }
     const handleVenue=()=>{
         navigate(`/venue?eventid=${event.eventid}`)
     }
@@ -69,6 +73,9 @@ const EventCard = ({event, handleSelect}) => {
             </button>
             <button className="go-agenda" onClick={handleRegistration}>
                 Registration
+            </button>
+            <button className="go-agenda" onClick={handleOffer}>
+                Sponsor Offers
             </button>
             {user.type===1?<button className="delete-button" onClick={handleSelect}>
                 Delete

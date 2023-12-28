@@ -8,9 +8,6 @@ import Sponsors from './Sponsors';
 import EventManager from './EventManager';
 import Offer from './Offer';
 import OrganizingTeamPage from './OrgSelection';
-import VenuePage from './AddVenue';
-import AddOrgTeam from './AddOrgTeam';
-import Dashboard from './DashBoard';
 
 import {
     BrowserRouter,
@@ -26,6 +23,8 @@ import LoginForm from "./LoginForm";
 import EventExpenses from "./EventExpenses";
 import OrgSelection from "./OrgSelection";
 import AttendeeList from "./Attendees";
+import SponsorOffersList from "./SponserOffers";
+import SponsorsCoordinator from "./SponserCoordinator";
 
 const TestCall = () => {
 console.log('test');
@@ -42,7 +41,7 @@ function App () {
 
                     <Route path="/events" element={<EventList/>}/>
                     <Route path ="/add-event" element={<EventManager/>}/>
-                    <Route path="/offer/:id" element={<Offer/>} />
+                    <Route path="/offer/:id" element={<SponsorOffersList/>} />
                     <Route path="/agenda/:id" element={<Agenda />} />
                     <Route path="/venue" element={<VenueList />} />
                     <Route path="/signup" element={<SignupForm/>}/>
@@ -50,6 +49,7 @@ function App () {
                     <Route path="/expenses/:id" element={<EventExpenses/>}/>
                     <Route path="/organizing" element={<OrganizingTeamPage/>}/>
                     <Route path="/attendee/:id" element={<AttendeeList/>}/>
+                    <Route path="/callSponsor" element={<SponsorsCoordinator/>}/>
 {/*
                     <Route path="/" element={<Dashboard/>}/>
                     <Route path="/AddVenue" element={<VenuePage/>}/>

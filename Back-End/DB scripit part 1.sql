@@ -194,12 +194,12 @@ price int ,
 
 primary key (speakerID ,eventManagerID),
 
-foreign key (speakerID) references Speaker
-ON DELETE cascade
-ON UPDATE cascade ,
-foreign key (eventManagerID) references eventManager
-ON DELETE cascade
-ON UPDATE cascade ,
+    foreign key (speakerID) references Speaker
+    ON DELETE cascade
+    ON UPDATE cascade ,
+    foreign key (eventManagerID) references eventManager
+    ON DELETE cascade
+    ON UPDATE cascade ,
 foreign key (eventID) references Event
 ON DELETE cascade
 ON UPDATE cascade 

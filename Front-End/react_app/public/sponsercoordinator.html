@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsors Coordinator</title>
+    <style>
+        /* Modern styling for the form and sponsor offers */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+        .sponsor-offers {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        select {
+            width: 100%; /* Ensures the select takes the width of its container */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sponsors Coordinator</h1>
+        <form id="sponsorForm">
+            <label for="Sponsers">Sponsor :</label>
+            <select id="Sponsers" name="cars">
+                <option value="Bwin">Bwin</option>
+                <option value="BMW">BMW</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+            <label for="offerPrice">Offer Price</label>
+            <input type="number" id="offerPrice" min="0" required>
+            <button type="button" onclick="SendOffer()">Send Offer</button>
+        </form>
+        <div id="result"></div>
+        <div class="sponsor-offers" id="sponsorOffers">
+            <!-- Sponsor offers will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        function SendOffer() {
+            const sponsorName = document.getElementById("sponsorName").value;
+            const offerAmount = parseFloat(document.getElementById("offerAmount").value);
+
+            // You can add more sponsors and their offers here
+            const sponsors = [
+                { name: "Sponsor A", amount: 5000 },
+                { name: "Sponsor B", amount: 7000 },
+                { name: "Sponsor C", amount: 6000 }
+            ];
+
+            let bestOffer = null;
+            let highestAmount = 0;
+
+            for (const sponsor of sponsors) {
+                if (sponsor.amount > highestAmount) {
+                    highestAmount = sponsor.amount;
+                    bestOffer = sponsor;
+                }
+            }
+
+            if (bestOffer) {
+                document.getElementById("result").innerHTML = `Best offer for ${sponsorName}: ${bestOffer.name} ($${bestOffer.amount})`;
+            } else {
+                document.getElementById("result").innerHTML = `No offers found for ${sponsorName}.`;
+            }
+        }
+    </script>
+</body>
+</html>
