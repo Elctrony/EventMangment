@@ -2,11 +2,11 @@
 import React, {useEffect, useState} from 'react';
 import './ExpenseList.css'; // Import a CSS file for styling
 import ExpenseModalForm from './ExpensesForm';
-import {useParams} from "react-router-dom";
-
+import {useNavigate, useParams} from "react-router-dom";
+import {useUser} from "./UserContext";
 
 const ExpenseList = ({ expenses, onDelete }) => {
-
+    const {user,setUser}=useUser();
     return (
         <div className="expense-list-container">
             <ul className="expense-list">
@@ -22,9 +22,9 @@ const ExpenseList = ({ expenses, onDelete }) => {
                             <span className="description">Description: {expense.description}</span>
                         </div>
                         <span className="amount">{expense.price*expense.quantity} EGP</span>
-                        <button onClick={() => onDelete(index,expense.id)} className="delete-btn">
+                        {user.type===2?<button onClick={() => onDelete(index,expense.id)} className="delete-btn">
                             Delete
-                        </button>
+                        </button>:<></>}
                     </li>
                 ))}
             </ul>
@@ -34,6 +34,7 @@ const ExpenseList = ({ expenses, onDelete }) => {
 
 const EventExpenses = () => {
 
+    const [count, setCount] = useState(0)
     const {id}= useParams();
     let eventID = parseInt(id);
     console.log("From Expenses: "+eventID);
@@ -41,6 +42,13 @@ const EventExpenses = () => {
     const [eventExpenses, setEventExpenses] = useState([]);
 
     const [isModalVisible, setModalVisibility] = useState(false);
+
+    const {user,setUser}=useUser();
+    const navigate =useNavigate();
+
+    if(!user||!user.id){
+        navigate('/login');
+    }
 
     const handleDeleteExpense =async (index,eid) => {
         console.log('Expense id: ',eid);
@@ -96,7 +104,7 @@ const EventExpenses = () => {
                 alert("Data failed in Insertion");
                 return;
             }
-            setEventExpenses([...eventExpenses, newExpense]);
+            setCount(count+1);
         }catch (e) {
             console.log(e);
             alert("Data failed in Insertion");
@@ -125,7 +133,7 @@ const EventExpenses = () => {
         };
 
         fetchData();
-    }, [eventID]);
+    }, [eventID,count]);
     const openModal = () => {
         setModalVisibility(true);
     };
@@ -138,9 +146,9 @@ const EventExpenses = () => {
         <div>
             <h1>Event Expenses Overview</h1>
             <ExpenseList expenses={eventExpenses} onDelete={handleDeleteExpense} />
-            <button onClick={openModal} className="add-btn">
+            {user.type===2?<button onClick={openModal} className="add-btn">
                 Add Expenses
-            </button>
+            </button>:<></>}
 
             {isModalVisible ? (
                 <ExpenseModalForm onSubmit={handleAddExpense} onClose={closeModal} />

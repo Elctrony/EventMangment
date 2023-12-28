@@ -24,9 +24,21 @@ exports.getEvents =async (req,res,next)=>{
 exports.getEventsByID =async (req,res,next)=>{
     console.log("GET Events by ID")
     let id = req.params.id;
-    console.log(id);
+    console.log("ID: ",id);
+    let type  =  parseInt(req.query.type);
+    console.log("Type: ",type);
+    if(!type){
+        type=1;
+    }
     try{
-       let events= await eventsmodel.getEventsById(id);
+        let events;
+        if(type===1){
+            console.log("Manager Request");
+           events = await eventsmodel.getEventsByManagerId(id);
+        }else{
+            console.log("Organizer Request");
+            events = await eventsmodel.getEventsByOrganizingId(id);
+        }
         if(events===-1){
             res.status(500).json({message:'There is error in the Server'})
             return;
@@ -139,9 +151,9 @@ exports.addAgendaSession = async (req,res,next)=>{
 exports.removeAgendaSession = async (req,res,next)=>{
     console.log("Remove Agenda Session");
     console.log(req.body);
-    let {sessionId}= req.body;
+    let {sessionid}= req.body;
     try {
-        let respone = await eventsmodel.removeSession(sessionId);
+        let respone = await eventsmodel.removeSession(sessionid);
         if(respone===-1){
             res.status(500).json({message:'There is error in the Server'})
             return;
@@ -196,6 +208,9 @@ exports.getExpensesId= async (req,res,next)=>{
 
 exports.deleteExpeneseId = async (req,res,next)=>{
     let {id}= req.body;
+    if(!id){
+        res.status(404).json({message: 'Expenses is not recognized in Database'})
+    }
     console.log("Delete Expense");
     console.log(req.body)
     try {
@@ -268,3 +283,56 @@ exports.addEventOrganizing = async (req,res,next)=>{
     }
 }
 
+
+exports.getAttendees = async (req,res,next)=>{
+    let eventId = req.params.id;
+    console.log(`Attendees EventID: ${eventId}`);
+
+    try{
+        let respone =await eventsmodel.getAttendees(eventId);
+        if(respone===-1){
+            res.status(500).json({message:'There is error in the Server'})
+            return;
+        }
+        res.status(200).json(JSON.stringify(respone));
+    }catch (e){
+        res.status(500).json({message:'There is error in the Server'})
+    }
+}
+
+exports.addAttendee =async (req, res) => {
+    try {
+        let { fname, lname, phone, email, eventid } = req.body;
+
+        // Ensure required fields are present
+        if (!fname || !lname || !phone || !email || !eventid) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+        eventid = parseInt(eventid);
+       let newAttendee = await eventsmodel.addAttendee(fname, lname, phone, email, eventid);
+        res.status(201).json({message:'A new attendee added', attendee:newAttendee});
+    } catch (error) {
+        console.error('Error inserting attendee:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+exports.deleteAttendee = async (req,res)=>{
+    try {
+        let { attendeeid } = req.body;
+        console.log("DELETE Attendee ", attendeeid)
+        // Ensure required fields are present
+        if (!attendeeid) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+        attendeeid = parseInt(attendeeid);
+        let respone = await eventsmodel.deleteAttendee(attendeeid);
+        if(respone===-1){
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+        res.status(200).json({message:'Attendee is deleted'});
+    } catch (error) {
+        console.error('Error inserting attendee:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}

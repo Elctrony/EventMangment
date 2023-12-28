@@ -11,7 +11,7 @@ const EventManager = () => {
     const navigate = useNavigate();
     console.log(user);
     useEffect(() => {
-        if (!user || !user.id) {
+        if(!user||!user.id){
             navigate('/login');
         }
     }, []);

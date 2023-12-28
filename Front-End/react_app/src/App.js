@@ -25,6 +25,7 @@ import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 import EventExpenses from "./EventExpenses";
 import OrgSelection from "./OrgSelection";
+import AttendeeList from "./Attendees";
 
 const TestCall = () => {
 console.log('test');
@@ -48,6 +49,7 @@ function App () {
                     <Route path="/login" element={<LoginForm/>}/>
                     <Route path="/expenses/:id" element={<EventExpenses/>}/>
                     <Route path="/organizing" element={<OrganizingTeamPage/>}/>
+                    <Route path="/attendee/:id" element={<AttendeeList/>}/>
 {/*
                     <Route path="/" element={<Dashboard/>}/>
                     <Route path="/AddVenue" element={<VenuePage/>}/>

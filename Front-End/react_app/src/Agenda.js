@@ -1,19 +1,30 @@
 // Agenda.js
 
 import React, { useState,useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 import './Agenda.css'
 import moment from "moment/moment";
 import PopupForm from './AddAgenda'
 
+import {useUser} from "./UserContext";;
 let agendaId=0;
 const Agenda = ({EventId}) => {
     const {id}= useParams();
     agendaId= id;
     console.log("From Agenda: "+agendaId);
 
-  const [agendaItems, setAgendaItems] = useState([]);
+    const [agendaItems, setAgendaItems] = useState([]);
+    const [count,setCount] = useState(0);
+
+    const {user,setUser} = useUser();
+    const navigate =useNavigate();
+
+    if(!user||!user.id){
+        navigate('/login');
+    }
+
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,18 +45,9 @@ const Agenda = ({EventId}) => {
         };
 
         fetchData();
-    }, [agendaId]);
-    const handleEdit = (id,updatedTime, updatedDescription) => {
-    setAgendaItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item,time:updatedTime, description: updatedDescription } : item
-      )
-    );
-  };
+    }, [EventId,count]);
 
-  const handleAdd = (newItem) => {
-    setAgendaItems((prevItems) => [...prevItems, newItem]);
-  };
+
 
   const handleRemove = (id) => {
     setAgendaItems((prevItems) => prevItems.filter((item) => item.sessionid !== id));
@@ -67,8 +69,12 @@ const Agenda = ({EventId}) => {
     };
 
     const closePopup = (newItem) => {
+
         setPopupOpen(false);
-        window.location.reload();
+        if(newItem===-1){
+            return;
+        }
+        setCount(count+1);
     };
 
 
@@ -79,13 +85,13 @@ const Agenda = ({EventId}) => {
         {agendaItems.map((item) => (
             <li key={item.sessionid} className='List'>
                 Start Time: {item.sttime} - Duration : {item.duration} Minutes - {item.description}
-                <button onClick={() => handleRemove(item.sessionid)} className='Button'>Remove</button>
+                {user.type===2?<button onClick={() => handleRemove(item.sessionid)} className='Button'>Remove</button>:<></>}
             </li>
         ))}
       </ul>
-      <button onClick={openPopup} className='Button'>
+        {user.type===2?<button onClick={openPopup} className='Button'>
         Add Item
-      </button>
+      </button>:<></>}
         <div>
             {isPopupOpen && <PopupForm eventId={agendaId} onClose={closePopup} />}
         </div>

@@ -4,6 +4,7 @@ import './OrgSelection.css';
 
 import './DeleteConfirmationModal.css'
 import {useLocation, useNavigate} from "react-router-dom";
+import {useUser} from "./UserContext";
 const SelectConfirmationModal = ({isOpen, onCancel, onConfirm }) => {
   return (
       <div className={`modal ${isOpen ? 'open' : ''}`}>
@@ -64,6 +65,13 @@ const OrganizingTeamPage = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   let eventId = queryParams.get('eventid');
+
+  const {user,setUser} = useUser();
+
+
+  if(!user||!user.id){
+    navigate('/login');
+  }
 
   useEffect(() => {
     const fetchData = async () => {

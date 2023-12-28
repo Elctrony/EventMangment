@@ -62,8 +62,11 @@ form{
     position: relative;
     height: 50px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 12px;
     border-radius: 6px;
+}
+label{
+    font-weight: normal;
 }
 .field input,
 .field button{
@@ -73,6 +76,7 @@ form{
     font-size: 16px;
     font-weight: 400;
     border-radius: 6px;
+    margin-top: 0px;
 }
 .field input{
     outline: none;
@@ -181,4 +185,16 @@ a.google span{
         padding: 20px 10px;
     }
 
+}
+
+
+.radio-group{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* ExpensesForm.css */
+.red-text {
+    color: red;
 }

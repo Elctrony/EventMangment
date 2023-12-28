@@ -19,7 +19,7 @@ const EventList = ({cardCallback}) => {
   const { user, setUser } = useUser();
   const navigate =useNavigate();
   useEffect(() => {
-    if(!user.id){
+    if(!user||!user.id){
       navigate('/login');
       return;
     }
@@ -28,6 +28,9 @@ const EventList = ({cardCallback}) => {
         let url = `http://localhost:8080/events`;
         if(user.id){
           url = url+`/${user.id}`;
+        }
+        if(user.type){
+          url=url+`?type=${user.type}`;
         }
         console.log(url);
         const response = await fetch(url);
@@ -129,7 +132,7 @@ const EventList = ({cardCallback}) => {
               </div>
           ))}
 
-        <button className="add-event-button" onClick={handleAddEvent}>Add Event</button>
+        {user.type===1?<button className="add-event-button" onClick={handleAddEvent}>Add Event</button>:<></>}
 
 
       {isDeleteModalOpen?<DeleteConfirmationModal

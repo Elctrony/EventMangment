@@ -126,10 +126,10 @@ ON UPDATE cascade
 create table Attendee
 (
 ID int              ,
-Fname  nvarchar(50) not null,
-Lname  nvarchar(50) not null, 
-Phone int  not null, 
-Email nvarchar (50) not null, 
+Fname  varchar(50) not null,
+Lname  varchar(50) not null,
+Phone varchar (50)  not null,
+Email varchar (50) not null,
 
 primary key (ID), 
 )

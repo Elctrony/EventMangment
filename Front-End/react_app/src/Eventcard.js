@@ -7,11 +7,11 @@ import { useNavigate  } from 'react-router-dom';
 import DeleteConfirmationModal from "./DeleteEvent";
 
 
-
+import {useUser} from "./UserContext";
 
 const EventCard = ({event, handleSelect}) => {
     const navigate = useNavigate ();
-
+    const {user,setUser} = useUser();
 
     const handleAgenda = () => {
 
@@ -27,7 +27,9 @@ const EventCard = ({event, handleSelect}) => {
     const handleOrganizing=()=>{
         navigate(`/organizing?eventid=${event.eventid}`);
     }
-
+    const handleRegistration=()=>{
+        navigate(`/attendee/${event.eventid}`);
+    }
 
 
   return (
@@ -35,21 +37,23 @@ const EventCard = ({event, handleSelect}) => {
     <div className="event-card" /*onClick={handleClick}*/>
       <h3>{event.eventname}</h3>
         <p>{event.description}</p>
-        {event.venue_name ? (
+        { event.venue_name ? (
             <p>Venue: {event.venue_name}</p>
-        ) : (
+        ) : user.type===2?(
             <button className="select-venue-button" onClick={handleVenue}>
                 Select Venue
             </button>
-        )}
+        ):<p>Venue is not selected yet</p>}
         <div></div>
-        {event.organizing_team_name ? (
-            <p>Organizing Team: {event.organizing_team_name}</p>
-        ) : (
-            <button className="select-venue-button" onClick={handleOrganizing}>
-                Select Org Team
-            </button>
-        )}
+        {
+            user.type===1? event.organizing_team_name ? (
+                <p>Organizing Team: {event.organizing_team_name}</p>
+            ) : (
+                <button className="select-venue-button" onClick={handleOrganizing}>
+                    Select Organizing Team
+                </button>
+            ):<></>
+        }
          <p>Date: {event.date}</p>
         <div className="event-time">
             <p>{event.sttime}</p>
@@ -63,9 +67,12 @@ const EventCard = ({event, handleSelect}) => {
             <button className="go-expenses" onClick={handleExpenses}>
                 Expenses
             </button>
-            <button className="delete-button" onClick={handleSelect} >
-                Delete
+            <button className="go-agenda" onClick={handleRegistration}>
+                Registration
             </button>
+            {user.type===1?<button className="delete-button" onClick={handleSelect}>
+                Delete
+            </button>:<></>}
         </div>
 
     </div>

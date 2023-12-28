@@ -7,6 +7,7 @@ const initialState = {
     lname:null,
     phone:null,
     email: null,
+    type:null,
 };
 
 // Create a context

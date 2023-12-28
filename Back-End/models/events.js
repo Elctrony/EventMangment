@@ -4,24 +4,41 @@ const events = require("events");
 
 exports.getAllEvents =async ()=>{
    try{
-       let res= await pool.query(`SELECT e.*, v.name AS venue_name, og.name AS organizing_team_name
+        let res= await pool.query(`SELECT ${''} e.*, v.name AS venue_name, og.name AS organizing_team_name
                                   FROM event e
                                   LEFT JOIN venue v ON e.venueid = v.id
                                   LEFT JOIN organizingteam og ON e.orgteamid = og.id
-                                  WHERE (e.venueid = v.id OR e.venueid IS NULL) AND (e.orgteamid = og.id OR e.orgteamid IS NULL);`);
+                                  WHERE (e.venueid = v.id OR e.venueid IS NULL) AND (e.orgteamid = og.id OR e.orgteamid IS NULL); `);
        return res.rows;
    }catch (e){
        console.log(e);
        return -1;
    }
 }
-exports.getEventsById=async (id)=>{
+exports.getEventsByManagerId=async (id)=>{
+    try{
+        let query=`SELECT e.*, v.name AS venue_name, og.name AS organizing_team_name
+                                   FROM event e
+                                            LEFT JOIN venue v ON e.venueid = v.id
+                                            LEFT JOIN organizingteam og ON e.orgteamid = og.id
+                                   WHERE e.managerid = ${id} AND (e.venueid = v.id OR e.venueid IS NULL) AND (e.orgteamid = og.id OR e.orgteamid IS NULL);
+                                   `;
+        console.log(query);
+        let res= await pool.query(query);
+        return res.rows;
+    }catch (e){
+        console.log(e);
+        return -1;
+    }
+}
+
+exports.getEventsByOrganizingId = async (id)=>{
     try{
         let res= await pool.query(`SELECT e.*, v.name AS venue_name, og.name AS organizing_team_name
                                    FROM event e
                                             LEFT JOIN venue v ON e.venueid = v.id
                                             LEFT JOIN organizingteam og ON e.orgteamid = og.id
-                                   WHERE e.managerid = ${id} AND (e.venueid = v.id OR e.venueid IS NULL) AND (e.orgteamid = og.id OR e.orgteamid IS NULL);
+                                   WHERE e.orgteamid = ${id} AND (e.venueid = v.id OR e.venueid IS NULL) AND (e.orgteamid = ${id});
                                    `);
         return res.rows;
     }catch (e){
@@ -29,6 +46,7 @@ exports.getEventsById=async (id)=>{
         return -1;
     }
 }
+
 
 exports.getAgenda=async (id)=>{
     try{
@@ -112,7 +130,7 @@ exports.addExpenses = async (eventid,name,qty,price,description,type)=>{
 	                     VALUES (${eventid}, '${name}', ${qty}, ${price}, '${description}',${type});`
         console.log(qur);
         let res=await pool.query(qur);
-        console.log(res)
+        console.log(res);
         return res;
     }catch (e){
         console.log(e);
@@ -168,6 +186,49 @@ exports.getOrganizingTeam = async ()=>{
         let res=await pool.query(qur);
         console.log(res)
         return res.rows;
+    }catch (e){
+        console.log(e);
+        return -1;
+    }
+}
+
+exports.getAttendees=async (eventid)=>{
+    try{
+        let qur= `SELECT * FROM attendee WHERE eventid = ${eventid};`;
+        console.log(qur);
+        let res=await pool.query(qur);
+        console.log(res)
+        return res.rows;
+    }catch (e){
+        console.log(e);
+        return -1;
+    }
+}
+
+exports.addAttendee = async (fname, lname, phone, email, eventid)=>{
+
+    try{
+        const result = await pool.query(
+            'INSERT INTO Attendee (Fname, Lname, Phone, Email, eventid) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            [fname, lname, phone, email, eventid]
+        );
+        console.log(result);
+        const newAttendee = result.rows[0];
+        console.log(newAttendee)
+        return newAttendee;
+    }catch (e){
+        console.log(e);
+        return -1;
+    }
+
+}
+
+exports.deleteAttendee =async (attendeeId)=>{
+    try{
+        const result = await pool.query(
+           `DELETE FROM public.attendee WHERE id=${attendeeId};`);
+        console.log(result);
+        return result;
     }catch (e){
         console.log(e);
         return -1;

@@ -4,17 +4,20 @@ body{
 .List{
     display: block;
     background-color: aliceblue;
-    margin-top: 10px;
+    margin: 10px 64px;
     height: auto;
     border-color: black;
     border-radius: 1em;
     border-style: solid;
+    padding: 8px;
+
 }
 .Button{
     border-radius: 1em;
     background-color: black;
     color: blanchedalmond;
-    margin: 5px;
+    margin: 0px 20px;
+    padding: 8px;
     border-style:dashed
 }
 .Button:hover{

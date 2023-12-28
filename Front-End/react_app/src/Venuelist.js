@@ -4,6 +4,7 @@ import  VenueCard from './Venue'
 import moment from "moment/moment";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import './OrgSelection.css';
+import {useUser} from "./UserContext";
 
 let selectId=-1;
 
@@ -89,7 +90,10 @@ const AvailableVenues = () => {
 
     const navigate = useNavigate();
 
-
+    const {user,setUser} = useUser();
+    if(!user||!user.id){
+        navigate('/login');
+    }
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);

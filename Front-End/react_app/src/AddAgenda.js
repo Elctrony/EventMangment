@@ -106,7 +106,7 @@ const PopupForm = ({ eventId,onClose }) => {
 
                     <div className="form-line">
                         <button type="submit">Submit</button>
-                        <button type="button" onClick={onClose}>
+                        <button type="button" onClick={()=>onClose(-1)}>
                             Close
                         </button>
                     </div>
