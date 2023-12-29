@@ -11,8 +11,9 @@ const venues = require('./router/venues')
 const auth = require('./router/auth')
 
 const sponsors = require('./router/sponsors');
-const pool = require('./db');
 
+
+const dashboard = require('./router/dashboard');
 
 
 app.use(bodyParser.json())
@@ -33,6 +34,8 @@ app.use(events)
 app.use(venues)
 app.use(auth)
 app.use(sponsors);
+
+app.use('/dashboard',dashboard);
 
 app.listen(8080,()=>{
     console.log("server is running in 8080");

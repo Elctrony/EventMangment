@@ -5,27 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="893d2e76-129a-4167-a4da-42663d3567e8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/sponsors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/sponsors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router/sponsors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/public/sponsercoordinator.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/SponserCoordinator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/SponserOffers.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Front-End/react_app/src/SponserOffers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dashboard/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dashboard/src/AddOrgTeam.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dashboard/src/AddOrgTeam.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dashboard/src/AddVenue.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dashboard/src/AddVenue.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dashboard/src/ButtonContainer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dashboard/src/Dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/router/dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/AddSpeaker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/AddSponsor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/AttendeeList.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/OrgSelection.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/OrgSelection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/SonsorsList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/SpeakersList.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/SpeakersList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/SponsorsList.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/Venue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/Venue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/Venuelist.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/Venuelist.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DB scripit part 1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DB scripit part 1.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/DashBoard.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/DashBoard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Eventcard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Eventcard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/AddOrgTeam.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/AddOrgTeam.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/AddVenue.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/AddVenue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Eventlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Eventlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Venuelist.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Venuelist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/AddOrgTeam.css" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/AddOrgTeam.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/AddOrgTeam.js" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/AddOrgTeam.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/AddVenue.css" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/AddVenue.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/AddVenue.js" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/AddVenue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/ButtonContainer.css" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/ButtonContainer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +94,8 @@
       <workItem from="1703454317963" duration="802000" />
       <workItem from="1703610291882" duration="10102000" />
       <workItem from="1703690307227" duration="403000" />
-      <workItem from="1703690730183" duration="21784000" />
+      <workItem from="1703690730183" duration="24688000" />
+      <workItem from="1703807401249" duration="6911000" />
     </task>
     <servers />
   </component>

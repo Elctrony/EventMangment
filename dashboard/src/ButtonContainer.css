@@ -1,11 +1,13 @@
 /* ButtonContainer.css */
 
 .button-container {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
+    gap: 10px; /* Adjust the gap between columns as needed */
+    justify-content: center; /* Center the items horizontally */
     margin-top: 50px;
+    padding: 32px;
 }
-
 .big-button {
     font-size: 18px;
     padding: 20px;

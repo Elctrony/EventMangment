@@ -1,14 +1,62 @@
+/* AddOrgTeam.css */
 
-.team-member-box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 200px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-  }
-  
-  .team-member-box strong {
-    display: block;
+/* Overall container styling */
+.frame {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+h1 {
+    color: #007bff;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
     margin-bottom: 10px;
-  }
-  
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Button styling */
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Added Team Members styling */
+.team-member-box {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.team-member-box strong {
+    display: block;
+    color: #007bff;
+}

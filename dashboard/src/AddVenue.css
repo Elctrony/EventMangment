@@ -2,7 +2,16 @@
 .form-container {
     margin-bottom: 20px;
   }
-  
+
+.frame {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+}
+
   form {
     max-width: 300px; 
     margin: 0 auto;
@@ -32,4 +41,38 @@
     transition-duration: 0.8s;
   }
 
-  
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+button {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.venue-box {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}

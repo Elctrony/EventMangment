@@ -3,25 +3,21 @@ import './ButtonContainer.css';
 import {useNavigate} from "react-router-dom"; // You can create a CSS file for styling
 
 const Dashboard = () => {
-    const [selected, setSelected] = useState()
 
-    const handleButtonClick = (label) => {
-        // Handle button click based on the label
-        console.log(`Button clicked: ${label}`);
-        setSelected(label);
 
-        // You can add logic to navigate to specific pages or perform other actions
-    };
     const navigate = useNavigate();
     return (
         <div>
             <div className="button-container">
                 <BigButton label="Add Venue" onClick={() => navigate('/add-venue')} />
                 <BigButton label="Add Organizing Team" onClick={() => navigate('/add-organizer')} />
-                <BigButton label="Add Speaker" onClick={() => handleButtonClick("Add Speaker")} />
-                <BigButton label="Add Sponsor" onClick={() => handleButtonClick("Add Sponsor")} />
+                <BigButton label="Add Speaker" onClick={() => navigate('/add-speaker')} />
+                <BigButton label="Add Sponsor" onClick={() => navigate('/add-sponsor')} />
+                <BigButton label="Select Venue" onClick={() => navigate('/venues')} />
+                <BigButton label="Select Organizing Team" onClick={() =>  navigate('/organinzers')} />
+                <BigButton label="Select Speakers" onClick={() => navigate('/speakers')} />
+                <BigButton label="Select Sponsors" onClick={() =>  navigate('/sponsors')} />
             </div>
-            <p>Button clicked: {selected}</p>
         </div>
 
     );

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import  './Venuelist.css'
+import './AttendeeList.css'
 import  VenueCard from './Venue'
-import moment from "moment/moment";
-import {useLocation, useNavigate, useParams} from "react-router-dom";
-import './OrgSelection.css';
-import {useUser} from "./UserContext";
+import {useNavigate} from "react-router-dom";
+
 
 let selectId=-1;
 
@@ -13,12 +12,12 @@ const SelectConfirmationModal = ({isOpen, onCancel, onConfirm }) => {
         <div className={`modal ${isOpen ? 'open' : ''}`}>
             <div className="modal-content">
                 <h2>Confirm Selection</h2>
-                <p>Are you sure you want to Select this Venue?</p>
+                <p>Are you sure you want to Delete this Venue?</p>
                 <div className="modal-buttons">
-                    <button className="cancel-button" onClick={onConfirm}>
-                        Yes, Select
+                    <button className="close-modal-button" onClick={onConfirm}>
+                        Yes, Delete
                     </button>
-                    <button className="yes-delete-button" onClick={onCancel}>
+                    <button className="submit-button" onClick={onCancel}>
                         Cancel
                     </button>
                 </div>
@@ -90,41 +89,22 @@ const AvailableVenues = () => {
 
     const navigate = useNavigate();
 
-    const {user,setUser} = useUser();
-    if(!user||!user.id){
-        navigate('/login');
-    }
 
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    let eventId = queryParams.get('eventid');
-    if(eventId){
-        eventId= parseInt(eventId);
-    }
-    console.log('event',eventId)
 
     const showAlert= ()=>{
         alert("You have to select Event first");
     }
-    const selectVenue = async(venuId) => {
-        if(!eventId){
-            showAlert()
-            return;
-        }
-        let body={
-            'venueid':venuId,
-            'eventid':eventId
-        }
-        console.log(body);
-        await fetch('http://localhost:8080/add-venue-event',{
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json',
+    const deleteVenue = async(venuId) => {
+        let respone= await fetch('http://localhost:8080/dashboard/delete-venue',{
+            method:"DELETE",
+            headers:{
+                "Content-Type":"application/json"
             },
-            body: JSON.stringify(body)
-        })
-        navigate('/');
-
+            body:JSON.stringify({
+                id:venuId
+            })
+        });
+        return (respone.status===200);
     };
 
     const fetchData = async ()=>{
@@ -145,6 +125,7 @@ const AvailableVenues = () => {
             const response = await fetch(`http://localhost:8080/venues?${new URLSearchParams(queryParams)}`);
             const data = await response.json();
             const filtered = JSON.parse(data);
+            console.log(filtered);
 
             //console.log(formattedDate);
             setFilteredVenues(filtered);
@@ -167,10 +148,18 @@ const AvailableVenues = () => {
 
     const confirmSelectTeam =async () => {
         console.log(selectId,"Confirm");
-        await selectVenue(selectId);
+        let res = await deleteVenue(selectId);
+        if(!res){
+            alert('Request failed');
+            return;
+        }
         setSelectVenue(false);
+        setFilteredVenues((prevState)=>{
+            return prevState.filter((item)=>{
 
-        navigate('/');
+                return item.id !==selectId;
+            })
+        })
     };
 
     const closeDeleteModal = () => {

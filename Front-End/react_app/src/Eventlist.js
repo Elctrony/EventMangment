@@ -126,11 +126,12 @@ const EventList = ({cardCallback}) => {
   return (
       <div className="event-list">
 
-          {eventList.map((event,index) => (
+        <h1>Event List:</h1>
+          {eventList.length>0? eventList.map((event,index) => (
               <div>
               <EventCard key={event.eventid} handleSelect={()=>handleClick(index,event.eventid)}   event={event}  />
               </div>
-          ))}
+          )):<h3>You have no Events to organize</h3>}
 
         {user.type===1?<button className="add-event-button" onClick={handleAddEvent}>Add Event</button>:<></>}
 

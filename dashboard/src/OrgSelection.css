@@ -1,0 +1,44 @@
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+
+.team-box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.team-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-box.selected {
+  background-color: #3498db;
+  color: #fff;
+  border-color: #2980b9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-box strong {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.team-box p {
+  margin: 8px 0;
+  color: #555;
+}
+
+/* Additional styles based on your preference */
