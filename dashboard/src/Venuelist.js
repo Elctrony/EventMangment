@@ -5,14 +5,14 @@ import  VenueCard from './Venue'
 import {useNavigate} from "react-router-dom";
 
 
-let selectId=-1;
 
-const SelectConfirmationModal = ({isOpen, onCancel, onConfirm }) => {
+const SelectConfirmationModal = ({isOpen, onCancel, onConfirm,venue }) => {
+    console.log(venue);
     return (
         <div className={`modal ${isOpen ? 'open' : ''}`}>
             <div className="modal-content">
                 <h2>Confirm Selection</h2>
-                <p>Are you sure you want to Delete this Venue?</p>
+                <p>Are you sure you want to Delete {venue?.id}?</p>
                 <div className="modal-buttons">
                     <button className="close-modal-button" onClick={onConfirm}>
                         Yes, Delete
@@ -28,7 +28,7 @@ const SelectConfirmationModal = ({isOpen, onCancel, onConfirm }) => {
 const VenueList = ({ venues, onSelect }) => (
     <div className="venues-grid">
         {venues.map((venue) => (
-            <VenueCard key={venue.id} {...venue} onSelect={onSelect} />
+            <VenueCard key={venue.id} {...venue} onSelect={()=>onSelect(venue)} />
         ))}
     </div>
 );
@@ -85,8 +85,8 @@ const FilterSection = ({ onFilterChange }) => {
 
 const AvailableVenues = () => {
     const [filteredVenues, setFilteredVenues] = useState([]);
-    const [selectedVenue, setSelectVenue] = useState(false)
-
+    const [showModal, setShowModal] = useState(false);
+    const [selectedVenue, setSelectedVenue] = useState(null);
     const navigate = useNavigate();
 
 
@@ -147,32 +147,31 @@ const AvailableVenues = () => {
 
 
     const confirmSelectTeam =async () => {
-        console.log(selectId,"Confirm");
-        let res = await deleteVenue(selectId);
+        console.log(selectedVenue,"Confirm");
+        let res = await deleteVenue(selectedVenue.id);
         if(!res){
             alert('Request failed');
             return;
         }
-        setSelectVenue(false);
+        setShowModal(false);
         setFilteredVenues((prevState)=>{
             return prevState.filter((item)=>{
 
-                return item.id !==selectId;
+                return item.id !==selectedVenue.id;
             })
         })
     };
 
     const closeDeleteModal = () => {
-        console.log(selectId,"Close");
-        selectId=-1
-        setSelectVenue(false);
+        console.log(selectedVenue,"Close");
+        setSelectedVenue(null)
+        setShowModal(false);
     };
-    const handleClick = (id)=>{
-        selectId = id;
+    const handleClick = (venue)=>{
+        setSelectedVenue(venue);
+        console.log(venue,"Clicked");
 
-        console.log(selectId,"Clicked");
-
-        setSelectVenue(true)
+        setShowModal(true)
     };
     return (
         <>
@@ -181,12 +180,20 @@ const AvailableVenues = () => {
             <FilterSection onFilterChange={filterVenues} />
             <VenueList venues={filteredVenues} onSelect={handleClick} />
         </div>
-            {selectedVenue && (
-                <SelectConfirmationModal
-                    isOpen={selectedVenue}
-                    onConfirm={confirmSelectTeam}
-                    onCancel={closeDeleteModal}
-                />
+            {showModal && (<div className={`modal ${showModal ? 'open' : ''}`}>
+                    <div className="modal-content">
+                        <h2>Confirm Selection</h2>
+                        <p>Are you sure you want to Delete {selectedVenue?.name}?</p>
+                        <div className="modal-buttons">
+                            <button className="close-modal-button" onClick={confirmSelectTeam}>
+                                Yes, Delete
+                            </button>
+                            <button className="submit-button" onClick={closeDeleteModal}>
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
             )}
         </>
     );
