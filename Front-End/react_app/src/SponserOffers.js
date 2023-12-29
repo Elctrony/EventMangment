@@ -31,7 +31,7 @@ const SponsorOffersList = () => {
     useEffect(() => {
         const fetchData=async ()=>{
             try {
-                let url = 'http://localhost:8080/sponsor-offers/' + id;
+                let url = 'http://localhost:8080/event-sponsor-offers/' + id;
                 console.log(url);
                 let repsone = await fetch(url);
                 let result = await repsone.json();

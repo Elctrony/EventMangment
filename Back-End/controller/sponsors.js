@@ -63,3 +63,50 @@ exports.getSponsorOffers = async (req,res,next)=>{
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
+
+
+/// for Sponsor Application Page
+
+exports.getAllSponsorsOffer =async (req, res) => {
+    let {id}= req.params;
+    console.log("GET Sponsor Offers");
+    console.log("SponsorID: ",id);
+    if(!id){
+        return res.status(400).json({ error: 'Missing required fields' });
+    }
+    id = parseInt(id);
+    try {
+        const sponsorOffers = await sponsorsmodel.getAllSponsorOffers(id);
+        res.json(sponsorOffers);
+    } catch (error) {
+        console.error('Error fetching sponsor offers:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+exports.acceptOffer = async (req, res) => {
+    const { offerId } = req.body;
+
+    try {
+        // Update the status of the offer to 2 (accepted) in the database
+        await sponsorsmodel.acceptSponsorOffer(offerId);
+
+        res.json({ message: `Accepted offer with ID: ${offerId}` });
+    } catch (error) {
+        console.error('Error accepting sponsor offer:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+exports.rejectOffer = async (req, res) => {
+    const { offerId } = req.body;
+
+    try {
+        // Update the status of the offer to 0 (rejected) in the database
+        await sponsorsmodel.rejectSponsorOffer(offerId);
+
+        res.json({ message: `Rejected offer with ID: ${offerId}` });
+    } catch (error) {
+        console.error('Error rejecting sponsor offer:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}

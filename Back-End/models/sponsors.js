@@ -42,3 +42,33 @@ exports.getSponsorOffers = async (eventId)=>{
         return -1;
     }
 }
+
+
+
+exports.getAllSponsorOffers = async (id) => {
+    try {
+        const result = await pool.query(`SELECT * FROM SponsorOffers so INNER JOIN Event e ON so.eventid = e.eventid WHERE so.sponsorid = ${id};`); // Replace with your actual table name
+        return result.rows;
+    } catch (error) {
+        console.error('Error fetching sponsor offers:', error);
+        throw error;
+    }
+};
+
+exports.acceptSponsorOffer = async (offerId) => {
+    try {
+        await pool.query('UPDATE public.sponsoroffers SET status = 2 WHERE id = $1', [offerId]);
+    } catch (error) {
+        console.error('Error accepting sponsor offer:', error);
+        throw error;
+    }
+};
+
+exports.rejectSponsorOffer = async (offerId) => {
+    try {
+        await pool.query('UPDATE public.sponsoroffers SET status = 0 WHERE id = $1', [offerId]);
+    } catch (error) {
+        console.error('Error rejecting sponsor offer:', error);
+        throw error;
+    }
+};

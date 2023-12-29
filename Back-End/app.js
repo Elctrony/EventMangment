@@ -15,6 +15,8 @@ const sponsors = require('./router/sponsors');
 
 const dashboard = require('./router/dashboard');
 
+const sponsorship = require('./router/sponsors');
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -36,6 +38,7 @@ app.use(auth)
 app.use(sponsors);
 
 app.use('/dashboard',dashboard);
+
 
 app.listen(8080,()=>{
     console.log("server is running in 8080");
