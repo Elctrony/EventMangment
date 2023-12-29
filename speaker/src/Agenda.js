@@ -5,20 +5,19 @@ import {useNavigate, useParams} from 'react-router-dom';
 
 import './Agenda.css'
 import moment from "moment/moment";
-import PopupForm from './AddAgenda'
 
-import {useUser} from "./UserContext";;
+import {useUser} from "./UserContext";
 let agendaId=0;
 const Agenda = ({EventId}) => {
-    const {id}= useParams();
-    agendaId= id;
-    console.log("From Agenda: "+agendaId);
+
 
     const [agendaItems, setAgendaItems] = useState([]);
     const [count,setCount] = useState(0);
 
     const {user,setUser} = useUser();
     const navigate =useNavigate();
+    console.log("From Agenda: "+user.id);
+
 
     if(!user||!user.id){
         navigate('/login');
@@ -29,7 +28,7 @@ const Agenda = ({EventId}) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/agenda/${agendaId}`);
+                const response = await fetch(`http://localhost:8080/agenda-speaker/${user.id}`);
                 const agendaJson = await response.json();
                 const agenda = JSON.parse(agendaJson);
                 console.log(agenda);
@@ -84,17 +83,12 @@ const Agenda = ({EventId}) => {
       <ul>
         {agendaItems.map((item) => (
             <li key={item.sessionid} className='List'>
-                Start Time: {item.sttime} - Duration : {item.duration} Minutes - {item.description} - Speaker: {item.fname} {item.lname}
+                Start Time: {item.sttime} - Duration : {item.duration} Minutes - {item.description}
                 {user.type===2?<button onClick={() => handleRemove(item.sessionid)} className='Button'>Remove</button>:<></>}
             </li>
         ))}
       </ul>
-        {user.type===2?<button onClick={openPopup} className='Button'>
-        Add Item
-      </button>:<></>}
-        <div>
-            {isPopupOpen && <PopupForm eventId={agendaId} onClose={closePopup} />}
-        </div>
+
 
     </div>
   );

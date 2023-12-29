@@ -69,7 +69,7 @@ exports.addSpeaker = async (req, res, next) => {
 
 exports.addSponsor = async (req, res, next) => {
     try {
-        let { name, phone, email } = req.body;
+        let { name, phone, email, password} = req.body;
         console.log("Add Sponsor");
         console.log(req.body);
 
@@ -82,7 +82,7 @@ exports.addSponsor = async (req, res, next) => {
 
         // Additional validation or data processing can be done here
 
-        let newSponsor = await dashboardModel.addSponsor(name, phone, email);
+        let newSponsor = await dashboardModel.addSponsor(name, phone, email,password);
         res.status(201).json({ message: 'A new Sponsor added', sponsor: newSponsor });
     } catch (error) {
         console.error('Error inserting Sponsor:', error.message);

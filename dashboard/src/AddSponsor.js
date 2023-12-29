@@ -94,6 +94,11 @@ const AddSponsor = () => {
                         <input type="text" name="email" value={newSponsor.email} onChange={handleInputChange} />
                         {errors.email && <div className="error-message">{errors.email}</div>}
                     </label>
+                    <label>
+                        Phone:
+                        <input type="password" name="password" value={newSponsor.password} onChange={handleInputChange} />
+                        {errors.password && <div className="error-message">{errors.password}</div>}
+                    </label>
                     <button type="button" onClick={handleAddSponsor}>
                         Add Sponsor
                     </button>

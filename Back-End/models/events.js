@@ -50,7 +50,18 @@ exports.getEventsByOrganizingId = async (id)=>{
 
 exports.getAgenda=async (id)=>{
     try{
-        let res= await pool.query(`Select * from agenda where eventid=${id}`);
+        let res= await pool.query(`SELECT ag.*, s.fname,s.lname
+                                   FROM Agenda ag JOIN Speaker s ON ag.speakerid = s.id
+                                   WHERE ag.eventid = ${id}`);
+        return res.rows;
+    }catch (e){
+        console.log(e);
+        return -1;
+    }
+}
+exports.getAgendaBySpeaker=async (id)=>{
+    try{
+        let res= await pool.query(`Select * from agenda where speakerid=${id}`);
         return res.rows;
     }catch (e){
         console.log(e);
@@ -93,6 +104,7 @@ exports.addEventOrganizing = async (eventid,orgteamid)=>{
 
     }
 }
+
 
 exports.addSession = async (eventData)=>{
 

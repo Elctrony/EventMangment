@@ -50,7 +50,7 @@ exports.addSpeaker = async (fname, lname, phone, email,password,regPassword) => 
 };
 
 
-exports.addSponsor = async (name, phone, email,password) => {
+exports.addSponsor = async (name, phone, email, password) => {
     try {
         const result = await pool.query(
             'INSERT INTO public.sponsor(name, phone, email, password) VALUES ($1, $2, $3, $4) RETURNING *',

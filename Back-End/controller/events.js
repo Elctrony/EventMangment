@@ -1,5 +1,5 @@
 const eventsmodel = require('../models/events');
-
+const authmodal = require('../models/auth');
 const bcrypt = require('bcryptjs')
 
 exports.getEvents =async (req,res,next)=>{
@@ -72,6 +72,26 @@ exports.getAgenda= async (req,res,nex)=>{
 
 }
 
+
+exports.getAgendaBySpeaker= async (req,res,next)=>{
+    let id = req.params.id;
+    try{
+        let agenda = await eventsmodel.getAgendaBySpeaker(id)
+        if(agenda===-1){
+            res.status(500).json({message:'There is error in the Server'})
+            return;
+        }
+        const jsonResult =JSON.stringify(agenda);
+        // console.log(jsonResult);
+        res.status(200).json(jsonResult);
+    }catch (e) {
+        console.log(e);
+        res.status(500).json({message:'There is error in the Server'})
+
+    }
+
+}
+
 exports.addEvent=async (req,res,next)=>{
     let mangerId = req.body.id;
     let name = req.body.name;
@@ -123,7 +143,18 @@ exports.addEventVenue = async (req,res,next)=>{
 exports.addAgendaSession = async (req,res,next)=>{
     console.log("Add Agenda Session");
     console.log(req.body);
-    const { eventid, sttime, duration, description, speakerid } = req.body;
+    const { eventid, sttime, duration, description, speakerid,speakerpassword } = req.body;
+
+    let speaker=  await authmodal.getSpeaker(speakerid);
+    if(speaker===-1){
+        res.status(404).json({error: "Speaker not found"});
+        return;
+    }
+
+    if(speaker.regPassword!==speakerpassword){
+        res.status(400).json({error: "Speaker password is not Correct"});
+        return;
+    }
 
     const eventData = {
         eventid,
@@ -142,7 +173,7 @@ exports.addAgendaSession = async (req,res,next)=>{
             res.status(500).json({message:'There is error in the Server'})
             return;
         }
-        res.json({message: 'Session Has been set up successfully'})
+        res.status(201).json({message: 'Session Has been set up successfully'})
     }catch (e) {
         res.status(500).json({message:'There is error in the Server'})
     }

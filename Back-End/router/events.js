@@ -8,6 +8,7 @@ router.get('/events/:id',eventsController.getEventsByID);
 router.get('/events',eventsController.getEvents);
 
 router.get('/agenda/:id',eventsController.getAgenda);
+router.get('/agenda-speaker/:id',eventsController.getAgendaBySpeaker);
 router.post('/add-event',eventsController.addEvent);
 router.post('/add-venue-event',eventsController.addEventVenue)
 router.post('/add-session',eventsController.addAgendaSession);
