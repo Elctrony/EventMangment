@@ -146,9 +146,9 @@ const EventExpenses = () => {
         <div>
             <h1>Event Expenses Overview</h1>
             <ExpenseList expenses={eventExpenses} onDelete={handleDeleteExpense} />
-            {user.type===2?<button onClick={openModal} className="add-btn">
-                Add Expenses
-            </button>:<></>}
+            <button onClick={openModal} className="add-btn">
+                Add Expenses or Funding
+            </button>
 
             {isModalVisible ? (
                 <ExpenseModalForm onSubmit={handleAddExpense} onClose={closeModal} />

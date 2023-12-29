@@ -8,6 +8,8 @@ const AddSpeaker = () => {
         lname: '',
         phone: '',
         email: '',
+        regPassword: '',
+        password: '',
     });
     const [errors, setErrors] = useState({});
 
@@ -28,6 +30,15 @@ const AddSpeaker = () => {
 
         if (!newSpeaker.email.trim()) {
             newErrors.email = 'Email is required';
+        }
+
+        if (!newSpeaker.password.trim()) {
+            newErrors.password = 'Password is required';
+        }
+
+
+        if (!newSpeaker.regPassword.trim()) {
+            newErrors.regPassword = 'Registration Password is required';
         }
 
         setErrors(newErrors);
@@ -67,6 +78,8 @@ const AddSpeaker = () => {
                 lname: '',
                 phone: '',
                 email: '',
+                password: '',
+                regPassword: ''
             });
         }
     };
@@ -96,6 +109,16 @@ const AddSpeaker = () => {
                         Email:
                         <input type="text" name="email" value={newSpeaker.email} onChange={handleInputChange} />
                         {errors.email && <div className="error-message">{errors.email}</div>}
+                    </label>
+                    <label>
+                        Password:
+                        <input type="password" name="password" value={newSpeaker.password} onChange={handleInputChange} />
+                        {errors.password && <div className="error-message">{errors.password}</div>}
+                    </label>
+                    <label>
+                        Registration Password:
+                        <input type="password" name="regPassword" value={newSpeaker.regPassword} onChange={handleInputChange} />
+                        {errors.regPassword && <div className="error-message">{errors.regPassword}</div>}
                     </label>
                     <button type="button" onClick={handleAddSpeaker}>
                         Add Speaker

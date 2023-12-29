@@ -7,6 +7,7 @@ const PopupForm = ({ eventId,onClose }) => {
         duration: '',
         description: '',
         speakerId: '',
+        speakerPassword: ' ',
     });
 
     const handleInputChange = (e) => {
@@ -49,6 +50,7 @@ const PopupForm = ({ eventId,onClose }) => {
             duration: '',
             description: '',
             speakerId: '',
+            speakerPassword: ' ',
         });
     };
 

@@ -46,7 +46,8 @@ exports.addVenue = async (req,res,next)=>{
 
 exports.addSpeaker = async (req, res, next) => {
     try {
-        let { fname, lname, phone, email } = req.body;
+        let { fname, lname, phone, email,password, regPassword } = req.body;
+
         console.log("Add Speaker");
         console.log(req.body);
 
@@ -57,7 +58,7 @@ exports.addSpeaker = async (req, res, next) => {
 
         // Additional validation or data processing can be done here
 
-        let newSpeaker = await dashboardModel.addSpeaker(fname, lname, phone, email);
+        let newSpeaker = await dashboardModel.addSpeaker(fname, lname, phone, email,password,regPassword);
         res.status(201).json({ message: 'A new Speaker added', speaker: newSpeaker });
     } catch (error) {
         console.error('Error inserting Speaker:', error.message);

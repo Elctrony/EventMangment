@@ -33,11 +33,11 @@ exports.addVenue =async (name,location,capacity,price,rating)=>{
     }
 }
 
-exports.addSpeaker = async (fname, lname, phone, email) => {
+exports.addSpeaker = async (fname, lname, phone, email,password,regPassword) => {
     try {
         const result = await pool.query(
-            'INSERT INTO public.speaker(fname, lname, phone, email) VALUES ($1, $2, $3, $4) RETURNING *',
-            [fname, lname, phone, email]
+            'INSERT INTO public.speaker(fname, lname, phone, email,password, "regPassword") VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+            [fname, lname, phone, email,password,regPassword]
         );
         console.log(result);
         const newSpeaker = result.rows[0];
@@ -50,11 +50,11 @@ exports.addSpeaker = async (fname, lname, phone, email) => {
 };
 
 
-exports.addSponsor = async (name, phone, email) => {
+exports.addSponsor = async (name, phone, email,password) => {
     try {
         const result = await pool.query(
-            'INSERT INTO public.sponsor(name, phone, email) VALUES ($1, $2, $3) RETURNING *',
-            [name, phone, email]
+            'INSERT INTO public.sponsor(name, phone, email, password) VALUES ($1, $2, $3, $4) RETURNING *',
+            [name, phone, email, password]
         );
         console.log(result);
         const newSponsor = result.rows[0];

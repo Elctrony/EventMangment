@@ -1,31 +1,37 @@
 import React, { useState } from 'react';
 import './AddVenue.css'; // Make sure to have a corresponding CSS file
 
-const AddSpeaker = () => {
-    const [speakers, setSpeakers] = useState([]);
-    const [newSpeaker, setNewSpeaker] = useState({
+const AddSponsor = () => {
+    const [Sponsors, setSponsors] = useState([]);
+    const [newSponsor, setNewSponsor] = useState({
         name: '',
         phone: '',
         email: '',
+        password: '',
     });
     const [errors, setErrors] = useState({});
 
     const validateForm = () => {
         const newErrors = {};
 
-        if (!newSpeaker.name.trim()) {
+        if (!newSponsor.name.trim()) {
             newErrors.name = 'First name is required';
         }
 
 
 
-        if (!newSpeaker.phone.trim()) {
+        if (!newSponsor.phone.trim()) {
             newErrors.phone = 'Phone is required';
         }
 
-        if (!newSpeaker.email.trim()) {
+        if (!newSponsor.email.trim()) {
             newErrors.email = 'Email is required';
         }
+
+        if (!newSponsor.password.trim()) {
+            newErrors.password = 'Password is required';
+        }
+
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0; // Return true if no errors
@@ -33,8 +39,8 @@ const AddSpeaker = () => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setNewSpeaker((prevSpeaker) => ({
-            ...prevSpeaker,
+        setNewSponsor((prevSponsor) => ({
+            ...prevSponsor,
             [name]: value,
         }));
     };
@@ -46,7 +52,7 @@ const AddSpeaker = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newSpeaker),
+                body: JSON.stringify(newSponsor),
             });
 
             if (response.status !== 201) {
@@ -56,9 +62,9 @@ const AddSpeaker = () => {
 
             let result = await response.json();
             console.log(result);
-            setSpeakers((prevSpeakers) => [...prevSpeakers, result.sponsor]);
+            setSponsors((prevSponsors) => [...prevSponsors, result.sponsor]);
 
-            setNewSpeaker({
+            setNewSponsor({
                 name: '',
                 phone: '',
                 email: '',
@@ -74,35 +80,35 @@ const AddSpeaker = () => {
                 <form>
                     <label>
                         First Name:
-                        <input type="text" name="name" value={newSpeaker.name} onChange={handleInputChange} />
+                        <input type="text" name="name" value={newSponsor.name} onChange={handleInputChange} />
                         {errors.name && <div className="error-message">{errors.name}</div>}
                     </label>
 
                     <label>
                         Phone:
-                        <input type="text" name="phone" value={newSpeaker.phone} onChange={handleInputChange} />
+                        <input type="text" name="phone" value={newSponsor.phone} onChange={handleInputChange} />
                         {errors.phone && <div className="error-message">{errors.phone}</div>}
                     </label>
                     <label>
                         Email:
-                        <input type="text" name="email" value={newSpeaker.email} onChange={handleInputChange} />
+                        <input type="text" name="email" value={newSponsor.email} onChange={handleInputChange} />
                         {errors.email && <div className="error-message">{errors.email}</div>}
                     </label>
                     <button type="button" onClick={handleAddSponsor}>
-                        Add Speaker
+                        Add Sponsor
                     </button>
                 </form>
             </div>
 
-            {speakers.length > 0 && (
+            {Sponsors.length > 0 && (
                 <div className="">
-                    <h2>Added Speakers</h2>
-                    {speakers.map((speaker, index) => (
+                    <h2>Added Sponsors</h2>
+                    {Sponsors.map((Sponsor, index) => (
                         <div key={index} className="venue-box">
-                            <strong>{speaker.name} </strong>
-                            <h3>ID: {speaker.id}</h3>
-                            <p>Phone: {speaker.phone}</p>
-                            <p>Email: {speaker.email}</p>
+                            <strong>{Sponsor.name} </strong>
+                            <h3>ID: {Sponsor.id}</h3>
+                            <p>Phone: {Sponsor.phone}</p>
+                            <p>Email: {Sponsor.email}</p>
                         </div>
                     ))}
                 </div>
@@ -111,4 +117,4 @@ const AddSpeaker = () => {
     );
 };
 
-export default AddSpeaker;
+export default AddSponsor;

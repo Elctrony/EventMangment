@@ -5,40 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="893d2e76-129a-4167-a4da-42663d3567e8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../sponsor/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/.idea/sponsor.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/App.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/LoginForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/SignupForm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/SponsorOffersList.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/SponsorOffersList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/UserContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/reportWebVitals.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sponsor/src/setupTests.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/sponsors.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/sponsors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/sponsors.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/sponsors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/sponsors.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/sponsors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/SponserOffers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/SponserOffers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/AddAgenda.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/AddAgenda.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/EventExpenses.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/EventExpenses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/AddSpeaker.js" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/AddSpeaker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/AddSponsor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/AddSponsor.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +71,7 @@
       <workItem from="1703690307227" duration="403000" />
       <workItem from="1703690730183" duration="24688000" />
       <workItem from="1703807401249" duration="9700000" />
+      <workItem from="1703848280077" duration="910000" />
     </task>
     <servers />
   </component>
