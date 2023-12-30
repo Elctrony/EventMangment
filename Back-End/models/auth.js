@@ -3,8 +3,7 @@ const pool = require("../db");
 exports.addEventManager =async (fname,lname,phone,email,password)=>{
     try{
 
-        let qur= "INSERT INTO eventManager (Fname, Lname, Phone, Email, Password) VALUES"
-            +` ('${fname}' ,'${lname}', '${phone}', '${email}', '${password}');`;
+        let qur = `SELECT insert_event_manager('${fname}', '${lname}', '${phone}', '${email}', '${password}');`
         console.log(qur);
         let res = await pool.query(qur)
         console.log(res.rows);
@@ -21,14 +20,23 @@ exports.getEventManager =async (email)=>{
 
     try{
 
-        let qur= `SELECT * FROM eventmanager where email= '${email}'`;
+        let qur= `SELECT * FROM get_event_manager_by_email('${email}');`;
         console.log(qur);
         let res = await pool.query(qur)
         if(!res||!res.rows){
             return -1;
         }
-        console.log(res.rows);
-        return res.rows[0];
+        let result= res.rows.map((row)=>{
+          return {
+              id: row.Id,
+              fname: row.Fname,
+              lname: row.Lname,
+              phone: row.Phone,
+              email: row.Email,
+              password: row.Password
+          }
+        })
+        return result[0];
 
     }catch (e){
         console.log(e);
@@ -41,14 +49,23 @@ exports.getOrganizing =async (id)=>{
 
     try{
 
-        let qur= `SELECT * FROM organizingteam where id= ${id}`;
+        let qur= `SELECT * FROM get_organizing_team_by_id(${id});`;
         console.log(qur);
         let res = await pool.query(qur)
         if(!res||!res.rows){
             return -1;
         }
         console.log(res.rows);
-        return res.rows[0];
+        let result= res.rows.map((row)=>{
+            return {
+                id: row.Id,
+                name: row.name,
+                hiringcost: row.HiringCost,
+                rate: row.Rate,
+                password: row.Password
+            }
+        })
+        return result[0];
 
     }catch (e){
         console.log(e);
@@ -62,14 +79,23 @@ exports.getSponsor =async (id)=>{
 
     try{
 
-        let qur= `SELECT * FROM sponsor where id= ${id}`;
+        let qur= `SELECT * FROM get_sponsor_by_id(${id})`;
         console.log(qur);
         let res = await pool.query(qur)
         if(!res||!res.rows){
             return -1;
         }
         console.log(res.rows);
-        return res.rows[0];
+        let result= res.rows.map((row)=>{
+            return {
+                id: row.Id,
+                name: row.Name,
+                phone: row.Phone,
+                email: row.Email,
+                password: row.Password
+            }
+        })
+        return result[0];
 
     }catch (e){
         console.log(e);
@@ -84,14 +110,25 @@ exports.getSpeaker =async (id)=>{
 
     try{
 
-        let qur= `SELECT * FROM speaker where id= ${id}`;
+        let qur= `SELECT * FROM get_speaker_by_id(${id});`;
         console.log(qur);
         let res = await pool.query(qur)
         if(!res||!res.rows){
             return -1;
         }
         console.log(res.rows);
-        return res.rows[0];
+        let result= res.rows.map((row)=>{
+            return {
+                id: row.Id,
+                fname: row.Fname,
+                lname: row.Lname,
+                phone: row.Phone,
+                email: row.Email,
+                password: row.Password,
+                regPassword: row.RegPassword
+            }
+        })
+        return result[0];
 
     }catch (e){
         console.log(e);

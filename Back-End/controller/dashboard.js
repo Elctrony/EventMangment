@@ -185,3 +185,49 @@ exports.deleteSponsor = async (req, res, next) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
+
+exports.getStatistics = async (req,res,next)=>{
+    try{
+        const statistics = await dashboardModel.getStatistics();
+        if(statistics===-1){
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.status(200).json({statistics});
+    }catch (e) {
+        console.error('Error getting Statistics:', e.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+exports.getEventTable = async (req,res,next)=>{
+    try{
+        const eventTable = await dashboardModel.getEventTable();
+        if(eventTable===-1){
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.status(200).json({eventTable});
+    }catch (e) {
+        console.error('Error getting Statistics:', e.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+exports.getOrganizerTable = async (req,res,next)=>{
+    try{
+        const organizerTable = await dashboardModel.getOrganizersTable();
+        if(organizerTable===-1){
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.status(200).json({organizerTable});
+    }catch (e) {
+        console.error('Error getting Statistics:', e.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+
+

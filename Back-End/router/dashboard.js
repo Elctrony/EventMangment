@@ -13,4 +13,7 @@ router.delete('/delete-speaker',dashboardController.deleteSpeaker);
 router.get('/sponsors',dashboardController.getSponsors);
 router.delete('/delete-sponsor',dashboardController.deleteSponsor);
 
+router.get('/statistics',dashboardController.getStatistics);
+router.get('/events-table',dashboardController.getEventTable);
+router.get('/organizer-table',dashboardController.getOrganizerTable)
 module.exports = router;

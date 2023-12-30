@@ -35,6 +35,7 @@ exports.getEventManager = async (req,res,next)=>{
             })
             return;
         }
+
         if(respone.password != password){
             res.status(400).json({
                 'code':1,

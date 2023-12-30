@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import './ButtonContainer.css';
-import {useNavigate} from "react-router-dom"; // You can create a CSS file for styling
+import {useNavigate} from "react-router-dom";
+import ProjectStatistics from "./ProjectStatistics";
+import EventTable from "./EventTable";
+import OrganizerTable from "./OrganizerTable"; // You can create a CSS file for styling
 
 const Dashboard = () => {
 
@@ -18,6 +21,13 @@ const Dashboard = () => {
                 <BigButton label="Select Speakers" onClick={() => navigate('/speakers')} />
                 <BigButton label="Select Sponsors" onClick={() =>  navigate('/sponsors')} />
             </div>
+
+            <div></div>
+            <ProjectStatistics/>
+            <div></div>
+            <EventTable/>
+            <div></div>
+            <OrganizerTable/>
         </div>
 
     );

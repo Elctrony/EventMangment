@@ -5,32 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="893d2e76-129a-4167-a4da-42663d3567e8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../speaker/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/Agenda.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/Agenda.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/App.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/LoginForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/SignupForm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/UserContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/reportWebVitals.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../speaker/src/setupTests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/EventTable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/OrganizerTable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/ProjectStatistics.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dashboard/src/ProjectStatistics.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/events.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/AddAgenda.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/AddAgenda.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-End/react_app/src/Agenda.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-End/react_app/src/Agenda.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dashboard/src/AddSponsor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/AddSponsor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard/src/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard/src/Dashboard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +77,8 @@
       <workItem from="1703690307227" duration="403000" />
       <workItem from="1703690730183" duration="24688000" />
       <workItem from="1703807401249" duration="9700000" />
-      <workItem from="1703848280077" duration="4585000" />
+      <workItem from="1703848280077" duration="7605000" />
+      <workItem from="1703945283242" duration="5665000" />
     </task>
     <servers />
   </component>
